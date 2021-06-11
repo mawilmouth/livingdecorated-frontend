@@ -1,3 +1,20 @@
-* {
+// Foundation Imports
+@import 'foundation-sites/scss/foundation.scss';
+
+// Foundation Settings
+$breakpoint-classes: (small medium large xlarge);
+
+// Foundation Includes
+@include foundation-flex-grid;
+@include foundation-flex-classes;
+@include foundation-button;
+@include foundation-forms;
+@include foundation-global-styles;
+
+.left {
+  background-color: red;
+}
+
+.right {
   background-color: blue;
 }

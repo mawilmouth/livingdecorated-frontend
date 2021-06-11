@@ -7,6 +7,11 @@ export default function Home() {
         <title>LivingDecorated</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <div className="row">
+        <div className="columns small-6 left">left</div>
+        <div className="columns small-6 right">right</div>
+      </div>
     </div>
   )
 }
