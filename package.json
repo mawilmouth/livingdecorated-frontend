@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@tryghost/content-api": "^1.5.9",
     "foundation-sites": "^6.6.3",
     "next": "10.2.3",
     "react": "17.0.2",

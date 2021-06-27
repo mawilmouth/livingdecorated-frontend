@@ -1,6 +1,14 @@
-import Head from 'next/head'
+import React from 'react';
+import Head from 'next/head';
+import ghost from '../lib/ghost';
 
-export default function Home() {
+interface HomeProps {
+  data: any;
+}
+
+const Home: React.FC<HomeProps> = (props) => {
+  console.log(props);
+
   return (
     <div>
       <Head>
@@ -13,5 +21,15 @@ export default function Home() {
         <div className="columns small-6 right">right</div>
       </div>
     </div>
-  )
+  );
 }
+
+export async function getServerSideProps () {
+  const data = await ghost.posts.browse();
+
+  return {
+    props: { data }
+  };
+}
+
+export default Home;
