@@ -1,0 +1,248 @@
+.social-link {
+  list-style: none;
+  
+  a {
+    height: 100%;
+    padding: 0px;
+    margin: 0px 15px;
+    @include flex-align(column, center, center);
+  
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  
+    .facebook {
+      &:hover path {
+        fill: $ld-pink;
+      }
+  
+      path {
+        fill: $standard-black-font;
+        transition: fill 200ms;
+      }
+    }
+  
+    .instagram {
+      &:hover {
+        rect, path, line {
+          stroke: $ld-pink;
+        }
+      }
+  
+      rect, path, line {
+        stroke: $standard-black-font;
+        transition: stroke 200ms;
+      }
+    }
+  
+    .pinterest {
+      &:hover path{
+        fill: $ld-pink;
+      }
+  
+      path {
+        fill: $standard-black-font;
+        transition: fill 200ms;
+      }
+    }
+  
+    .youtube {
+      &:hover path {
+        fill: $ld-pink;
+      }
+  
+      path {
+        fill: $standard-black-font;
+        transition: fill 200ms;
+      }
+    }
+  
+    .etsy {
+      width: 14px;
+      height: 14px;
+      fill: $standard-black-font;
+      transition: fill 200ms;
+  
+      &:hover{
+        fill: $ld-pink;
+      }
+    }
+  }
+}
+
+.nav-container {
+  width: 100%;
+  height: 64px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2000;
+  background-color: $standard-white;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+
+  .row {
+    height: 100%;
+
+    .columns {
+      padding: 0px;
+    }
+  }
+
+  .list {
+    margin: 0px;
+    padding: 0px;
+    @include flex-align(row, flex-start, center);
+
+    .nav-link, .social-link {
+      list-style: none;
+    }
+  }
+
+  .links-container {
+    display: none;
+
+    @include screenbreak($large) {
+      @include flex-align();
+    }
+
+    .nav-link a {
+      display: block;
+      padding: 20px 15px;
+      font-weight: bold;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background-color 200ms;
+      color: $standard-black-font;
+
+      &:hover {
+        background-color: rgba($ld-pink, 0.3);
+      }
+    }
+  }
+
+  .socials-container {
+    display: none;
+
+    @include screenbreak($large) {
+      @include flex-align(row, flex-end);
+    }
+
+    .list {
+      height: 100%;
+    }
+  }
+
+  .logo-container {
+    @include flex-align(row, center, center);
+
+    @include screenbreak($large) {
+      display: none;
+    }
+  }
+
+  .burger-container {
+    position: fixed;
+    top: 20px;
+    left: 15px;
+
+    @include screenbreak($large) {
+      display: none;
+    }
+
+    .burger {
+      @include flex-align(column, center, center);
+      cursor: pointer;
+
+      .layer {
+        width: 28px;
+        height: 4px;
+        background-color: $ld-dark-grey;
+        transition: 300ms all;
+        
+        &:not(:last-child) {
+          margin-bottom: 4px;
+        }
+      }
+
+      &.active {
+        position: relative;
+        transform: translateY(8px);
+
+        .layer:nth-child(2) { display: none; }
+        .layer:nth-child(1) {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: rotate(45deg);
+        }
+        .layer:nth-child(3) {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+@include screenbreak($large) {
+  .bm-overlay, .bm-menu-wrap {
+    display: none;
+  }
+}
+
+.bm-menu-wrap {
+  top: 0px;
+  left: -100vw !important;
+  width: 100vw !important;
+  background-color: $standard-white;
+
+  &.active {
+    left: 0px !important;
+  }
+
+  @include screenbreak($small_medium) {
+    width: 300px !important;
+  }
+
+  .responsive-menu {
+    padding-top: 65px;
+
+    &:focus {
+      outline: none;
+    }
+
+    .list {
+      padding: 0px;
+
+      &.social-media {
+        @include flex-align();
+      }
+
+      .nav-link {
+        list-style: none;
+  
+        &:focus {
+          outline: none;
+        }
+  
+        a {
+          display: block;
+          padding: 15px 10px;
+          font-size: 16px;
+          text-transform: capitalize;
+          font-weight: bold;
+          text-decoration: none;
+          color: $standard-black-font;
+          transition: 300ms background-color, 300ms color;
+  
+          &:hover {
+            background-color: rgba($ld-pink, 0.3);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,18 +1,20 @@
 import { FC, ReactElement } from 'react';
 import Head from 'next/head';
-import PagesReader from '../lib/ghost/pages';
-import { PageProps } from '../types/pages/index';
-import TopNav from '../components/layout/TopNav';
+import PagesReader from '../../lib/ghost/pages';
+import { PageProps } from '../../types/pages/index';
+import TopNav from '../../components/layout/TopNav';
 
-const Home: FC<PageProps> = (props): ReactElement => {
+const Post: FC<PageProps> = (props): ReactElement => {
   return (
-    <div className="page-wrapper layout-container">
+    <div className="page-wrapper">
       <Head>
         <title>LivingDecorated</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <TopNav navPages={props.navPages} categoryPages={props.categoryPages} />
+
+      posts show
     </div>
   );
 }
@@ -26,4 +28,4 @@ export async function getServerSideProps () {
   };
 }
 
-export default Home;
+export default Post;

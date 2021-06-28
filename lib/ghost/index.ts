@@ -1,7 +1,8 @@
 import GhostApi from '@tryghost/content-api';
-import env from '../../env';
+import env from '../../constants/env';
+import { GhostApiType } from '../../types/lib/ghost';
 
-const ghost = new GhostApi({
+const ghost: GhostApiType = new GhostApi({
   host: env.ghostHost,
   key: env.ghostContentKey,
   version: env.ghostContentVersion,
