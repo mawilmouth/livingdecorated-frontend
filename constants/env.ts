@@ -1,8 +1,4 @@
-interface Env {
-  ghostHost: string;
-  ghostContentKey: string;
-  ghostContentVersion: string;
-}
+import { Env } from '../types/constants/env';
 
 const env: Env = {
   ghostHost: process.env.GHOST_HOST!,

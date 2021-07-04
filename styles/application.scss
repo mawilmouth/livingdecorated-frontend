@@ -1,9 +1,6 @@
 // Foundation Imports
 @import 'foundation-sites/scss/foundation.scss';
 
-// Foundation Settings
-$breakpoint-classes: (small medium large xlarge);
-
 // Foundation Includes
 @include foundation-flex-grid;
 @include foundation-flex-classes;
@@ -11,10 +8,30 @@ $breakpoint-classes: (small medium large xlarge);
 @include foundation-forms;
 @include foundation-global-styles;
 
-.left {
-  background-color: red;
+// Utilities
+@import './utils/settings';
+@import './utils/fonts';
+@import './utils/colors';
+@import './utils/mixins';
+
+// Components
+@import './components/layout/TopNav';
+
+body {
+  margin: 0px;
+  font-family: $standard-font-family;
+  height: 100%;
+
+  // Temporary
+  height: 10000px;
+  background-color: rgb(200, 200, 200);
 }
 
-.right {
-  background-color: blue;
+#root, .app {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }
