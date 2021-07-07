@@ -1,24 +1,13 @@
 import { FC, ReactElement } from 'react';
-import Head from 'next/head';
 import PagesReader from '../lib/ghost/pages';
 import { PageProps } from '../types/pages/index';
-import TopNav from '../layout/TopNav';
-import Footer from '../layout/Footer';
+import BasicLayout from '../layout/BasicLayout';
 
 const Home: FC<PageProps> = (props): ReactElement => {
   return (
-    <div className="page-wrapper layout-container">
-      <Head>
-        <title>LivingDecorated</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <TopNav navPages={props.navPages} categoryPages={props.categoryPages} />
-
+    <BasicLayout navPages={props.navPages} categoryPages={props.categoryPages} >
       <div className="body"></div>
-      
-      <Footer />
-    </div>
+    </BasicLayout>
   );
 }
 
