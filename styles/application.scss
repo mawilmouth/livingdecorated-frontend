@@ -15,16 +15,19 @@
 @import './utils/mixins';
 
 // Components
-@import './components/layout/TopNav';
+@import './layout/TopNav';
+@import './layout/Footer';
 
 body {
   margin: 0px;
   font-family: $standard-font-family;
   height: 100%;
 
-  // Temporary
-  height: 10000px;
-  background-color: rgb(200, 200, 200);
+  .body {
+    // Temporary
+    height: 500px;
+    background-color: rgb(200, 200, 200);
+  }
 }
 
 #root, .app {
