@@ -1,0 +1,17 @@
+.header-container {
+  display: none;
+  padding: 50px 0px;
+  font-size: 50px;
+  font-weight: 900;
+  font-family: $ld-font-family;
+  text-align: center;
+  color: $ld-dark-grey;
+
+  @include screenbreak($medium) {
+    display: block;
+  }
+
+  @include screenbreak($large) {
+    font-size: 70px;
+  }
+}

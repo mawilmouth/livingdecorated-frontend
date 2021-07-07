@@ -73,7 +73,7 @@
 
 .nav-container {
   width: 100%;
-  height: 64px;
+  height: $nav-height;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -138,6 +138,15 @@
 
     @include screenbreak($large) {
       display: none;
+    }
+
+    .logo-branding a {
+      margin: 0px;
+      font-size: 35px;
+      font-weight: bold;
+      text-decoration: none;
+      font-family: $ld-font-family;
+      color: $ld-dark-grey;
     }
   }
 
@@ -208,7 +217,7 @@
   }
 
   .responsive-menu {
-    padding-top: 65px;
+    padding-top: $nav-height;
 
     &:focus {
       outline: none;

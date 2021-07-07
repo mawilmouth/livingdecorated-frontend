@@ -1,7 +1,5 @@
 import { FC, ReactElement, ReactNode, Fragment, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import DarkLogo from '../public/images/ld-logo-dark.png';
 import { slide as Menu } from 'react-burger-menu'
 import { PageType } from '../types/lib/ghost/pages';
 import { TopNavProps } from '../types/layout/TopNav';
@@ -64,7 +62,11 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
             </ul>
           </div>
           <div className="columns small-12 logo-container">
-            <Image src={DarkLogo} alt="Dark logo for Living Decorated" width={190} height={30} />
+            <div className="logo-branding">
+              <Link href="/">
+                <a>LivingDecorated</a>
+              </Link>
+            </div>
           </div>
           <div className="columns small-4 socials-container">
             <ul className="list">
