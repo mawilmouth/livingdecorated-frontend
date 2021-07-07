@@ -1,21 +1,11 @@
 import { FC, ReactElement, ReactNode, Fragment, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import DarkLogo from '../../public/images/ld-logo-dark.png';
+import DarkLogo from '../public/images/ld-logo-dark.png';
 import { slide as Menu } from 'react-burger-menu'
-import socialMediaData from '../../staticData/socialMediaData';
-import { PageType } from '../../types/lib/ghost/pages';
-import {
-  TopNavProps,
-  SocialMediaLinksProps
-} from '../../types/components/layout/TopNav';
-import {
-  FacebookIcon,
-  InstagramIcon,
-  PinterestIcon,
-  YoutubeIcon,
-  EtsyIcon
-} from '../../modules/icons';
+import { PageType } from '../types/lib/ghost/pages';
+import { TopNavProps } from '../types/layout/TopNav';
+import SocialMediaLinks from '../components/layout/SocialMediaLinks';
 
 const TopNav: FC<TopNavProps> = (props): ReactElement => {
   const [mobileMenuActive, setMobileMenuActive] = useState<boolean>(false);
@@ -78,7 +68,7 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
           </div>
           <div className="columns small-4 socials-container">
             <ul className="list">
-              <SocialMediaLinks hrefs={socialMediaData} />
+              <SocialMediaLinks />
             </ul>
           </div>
           <div className="burger-container">
@@ -101,52 +91,10 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
             {navLinks}
           </ul>
           <ul className="list social-media">
-            <SocialMediaLinks hrefs={socialMediaData} />
+            <SocialMediaLinks />
           </ul>
         </div>
       </Menu>
-    </Fragment>
-  );
-}
-
-const SocialMediaLinks: FC<SocialMediaLinksProps> = ({ hrefs }): ReactElement => {
-  return (
-    <Fragment>
-      <li className="social-link">
-        <Link href={hrefs.facebook} passHref={true}>
-          <a>
-            <FacebookIcon className="facebook" />
-          </a>
-        </Link>
-      </li>
-      <li className="social-link">
-        <Link href={hrefs.instagram} passHref={true}>
-          <a>
-            <InstagramIcon className="instagram" />
-          </a>
-        </Link>
-      </li>
-      <li className="social-link">
-        <Link href={hrefs.pinterest} passHref={true}>
-          <a>
-            <PinterestIcon className="pinterest" />
-          </a>
-        </Link>
-      </li>
-      <li className="social-link">
-        <Link href={hrefs.youtube} passHref={true}>
-          <a>
-            <YoutubeIcon className="youtube" />
-          </a>
-        </Link>
-      </li>
-      <li className="social-link">
-        <Link href={hrefs.etsy} passHref={true}>
-          <a>
-            <EtsyIcon className="etsy" />
-          </a>
-        </Link>
-      </li>
     </Fragment>
   );
 }

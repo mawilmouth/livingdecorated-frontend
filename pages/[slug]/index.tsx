@@ -2,7 +2,7 @@ import { FC, ReactElement } from 'react';
 import Head from 'next/head';
 import PagesReader from '../../lib/ghost/pages';
 import { PageProps } from '../../types/pages/index';
-import TopNav from '../../components/layout/TopNav';
+import TopNav from '../../layout/TopNav';
 import { PageType } from '../../types/lib/ghost/pages';
 
 const Page: FC<PageProps> = (props): ReactElement => {
