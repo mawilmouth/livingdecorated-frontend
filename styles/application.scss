@@ -1,3 +1,6 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Glass+Antiqua&display=swap');
+
 // Foundation Imports
 @import 'foundation-sites/scss/foundation.scss';
 
@@ -15,19 +18,16 @@
 @import './utils/mixins';
 
 // Components
+@import './layout/BasicLayout';
 @import './layout/TopNav';
 @import './layout/Footer';
+@import './layout/Header';
 
 body {
   margin: 0px;
-  font-family: $standard-font-family;
   height: 100%;
-
-  .body {
-    // Temporary
-    height: 500px;
-    background-color: rgb(200, 200, 200);
-  }
+  font-family: $standard-font-family;
+  background-color: $standard-white--variant-2;
 }
 
 #root, .app {
