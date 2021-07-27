@@ -1,5 +1,6 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Glass+Antiqua&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Noto+Serif+JP&display=swap');
 
 // Foundation Imports
 @import 'foundation-sites/scss/foundation.scss';
@@ -37,4 +38,24 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+
+p.test {
+  font-size: 18px;
+  max-width: 1000px;
+  text-align: left;
+
+  a.test {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    color: $standard-green-font;
+    transition: color 200ms;
+  
+    &:hover {
+      text-decoration: underline;
+      color: $standard-green-font-variant--1;
+    }
+  }
 }

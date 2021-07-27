@@ -5,7 +5,7 @@
   font-weight: 900;
   font-family: $ld-font-family;
   text-align: center;
-  color: $ld-dark-grey;
+  color: $standard-black-font;
 
   @include screenbreak($medium) {
     display: block;

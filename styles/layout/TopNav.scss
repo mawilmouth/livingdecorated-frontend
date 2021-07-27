@@ -14,7 +14,7 @@
   
     .facebook {
       &:hover path {
-        fill: $ld-pink;
+        fill: $standard-green-font;
       }
   
       path {
@@ -26,7 +26,7 @@
     .instagram {
       &:hover {
         rect, path, line {
-          stroke: $ld-pink;
+          stroke: $standard-green-font;
         }
       }
   
@@ -38,7 +38,7 @@
   
     .pinterest {
       &:hover path{
-        fill: $ld-pink;
+        fill: $standard-green-font;
       }
   
       path {
@@ -49,7 +49,7 @@
   
     .youtube {
       &:hover path {
-        fill: $ld-pink;
+        fill: $standard-green-font;
       }
   
       path {
@@ -65,9 +65,23 @@
       transition: fill 200ms;
   
       &:hover{
-        fill: $ld-pink;
+        fill: $standard-green-font;
       }
     }
+  }
+}
+
+.nav-link-default {
+  display: block;
+  padding: 20px 15px;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 200ms, color 200ms;
+  color: $standard-black-font;
+
+  &:hover {
+    background-color: $standard-green-font;
   }
 }
 
@@ -103,21 +117,11 @@
     display: none;
 
     @include screenbreak($large) {
-      @include flex-align();
+      @include flex-align(row, flex-end, center);
     }
 
     .nav-link a {
-      display: block;
-      padding: 20px 15px;
-      font-weight: bold;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: background-color 200ms;
-      color: $standard-black-font;
-
-      &:hover {
-        background-color: rgba($ld-pink, 0.3);
-      }
+      @extend .nav-link-default;
     }
   }
 
@@ -137,16 +141,26 @@
     @include flex-align(row, center, center);
 
     @include screenbreak($large) {
-      display: none;
+      justify-content: flex-start;
     }
 
-    .logo-branding a {
-      margin: 0px;
-      font-size: 35px;
+    a {
+      @extend .nav-link-default;
+      display: inline-block;
+      padding: 0px 15px;
+      font-size: 30px;
       font-weight: bold;
-      text-decoration: none;
       font-family: $ld-font-family;
-      color: $ld-dark-grey;
+      text-transform: capitalize;
+
+      @include screenbreak($medium) {
+        font-size: 40px;
+      }
+
+      &:hover {
+        background-color: transparent;
+        color: $standard-green-font;
+      }
     }
   }
 
@@ -166,7 +180,7 @@
       .layer {
         width: 28px;
         height: 4px;
-        background-color: $ld-dark-grey;
+        background-color: $standard-black-font;
         transition: 300ms all;
         
         &:not(:last-child) {
@@ -248,7 +262,7 @@
           transition: 300ms background-color, 300ms color;
   
           &:hover {
-            background-color: rgba($ld-pink, 0.3);
+            background-color: rgba($standard-green-font, 0.3);
           }
         }
       }
