@@ -51,27 +51,17 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
     <Fragment>
       <div className="nav-container">
         <div className="row">
-          <div className="columns small-8 links-container">
+          <div className="columns small-12 large-4 logo-container">
             <ul className="list">
-              <li className="nav-link" key={`nav-link-home`} >
+              <li className="nav-link">
                 <Link href="/">
-                  <a>home</a>
+                  <a>living decorated</a>
                 </Link>
               </li>
-              {navLinks}
             </ul>
           </div>
-          <div className="columns small-12 logo-container">
-            <div className="logo-branding">
-              <Link href="/">
-                <a>LivingDecorated</a>
-              </Link>
-            </div>
-          </div>
-          <div className="columns small-4 socials-container">
-            <ul className="list">
-              <SocialMediaLinks />
-            </ul>
+          <div className="columns small-8 links-container">
+            <ul className="list">{navLinks}</ul>
           </div>
           <div className="burger-container">
             <div className={`burger ${burgerActiveClass}`} onClick={toggleMobileMenu} >
@@ -85,11 +75,6 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
       <Menu {...menuOptions}>
         <div className="responsive-menu" tabIndex={-1}>
           <ul className="list">
-            <li className="nav-link" key={`nav-link-home`} >
-              <Link href="/">
-                <a>home</a>
-              </Link>
-            </li>
             {navLinks}
           </ul>
           <ul className="list social-media">
