@@ -22,4 +22,5 @@ export interface GhostApiBrowseParamsType extends GhostApiReadParamsType {
   limit?: number | string;
   page?: number;
   order?: string;
+  fields?: string;
 }

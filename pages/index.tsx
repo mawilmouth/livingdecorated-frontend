@@ -1,11 +1,15 @@
 import { FC, ReactElement } from 'react';
 import PagesReader from '../lib/ghost/pages';
+import PostsReader from '../lib/ghost/posts';
 import { PageProps } from '../types/pages/index';
 import BasicLayout from '../layout/BasicLayout';
+import RecentPosts from '../components/RecentPosts';
 
 const Home: FC<PageProps> = (props): ReactElement => {
   return (
     <BasicLayout navPages={props.navPages} categoryPages={props.categoryPages} >
+      <RecentPosts posts={props.recentPosts} />
+
       <div className="body">
         <p className="test">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
@@ -25,9 +29,12 @@ const Home: FC<PageProps> = (props): ReactElement => {
 export async function getServerSideProps () {
   const navPages = await PagesReader.nav();
   const categoryPages = await PagesReader.categories();
+  const recentPosts = await PostsReader.recent({
+    limit: 4, fields: 'id,slug,title,feature_image'
+  });
 
   return {
-    props: { navPages, categoryPages }
+    props: { navPages, categoryPages, recentPosts }
   };
 }
 

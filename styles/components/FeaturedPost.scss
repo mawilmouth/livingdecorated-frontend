@@ -1,0 +1,48 @@
+.featured-post-container {
+  display: block;
+  text-decoration: none;
+
+  &:first-child {
+    margin-left: 0px;
+  }
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  .image-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+
+    .image {
+      position: absolute;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      transition: all 200ms;
+    }
+  }
+
+  .title {
+    margin: 10px 0px 25px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: color 200ms;
+    color: $standard-black-font;
+
+    @include screenbreak($large) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &:hover {
+    .image-wrapper .image {
+      transform: scale(1.1);
+    }
+
+    .title {
+      color: $standard-green-font;
+    }
+  }
+}

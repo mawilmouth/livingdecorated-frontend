@@ -16,10 +16,9 @@ const BasicLayout: FC<BasicLayoutProps> = (props: BasicLayoutProps): ReactElemen
       <TopNav categoryPages={props.categoryPages} navPages={props.navPages} />
 
       <div className="row expanded">
-        <div className="columns small-12">
+        <div className="columns small-12 basic-layout-container">
           <div className="row inner-layout-wrapper">
-            <div className={`columns content-container ${props.contentContainerClass}`}>{props.children}</div>
-            { props.renderSidebar && <div className="columns small-4"></div> }
+            <div className="columns content-container">{props.children}</div>
           </div>
         </div>
       </div>
