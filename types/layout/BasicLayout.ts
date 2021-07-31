@@ -5,6 +5,5 @@ export interface BasicLayoutProps {
   navPages: PageType[];
   categoryPages: PageType[];
   contentContainerClass?: string;
-  renderSidebar?: boolean;
   children?: React.ReactNode;
 }

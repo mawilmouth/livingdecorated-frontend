@@ -1,3 +1,13 @@
-.inner-layout-wrapper {
-  margin-top: $nav-height;
+.layout-container {
+  .basic-layout-container {
+    padding: 0px;
+
+    .inner-layout-wrapper {
+      margin-top: $nav-height;
+
+      .content-container {
+        padding: 0px;
+      }
+    }
+  }
 }

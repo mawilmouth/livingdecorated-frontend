@@ -18,11 +18,15 @@
 @import './utils/colors';
 @import './utils/mixins';
 
-// Components
+// Layout
 @import './layout/BasicLayout';
 @import './layout/TopNav';
 @import './layout/Footer';
 @import './layout/Header';
+
+// Components
+@import './components/FeaturedPost';
+@import './components/RecentPosts';
 
 body {
   margin: 0px;
