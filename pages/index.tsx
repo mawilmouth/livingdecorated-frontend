@@ -55,9 +55,6 @@ export const getServerSideProps: GetServerSideProps = async (): Promise<ServerSi
   let categoriesPosts = [];
   let excludePostsIds: string[] = getField('id', recentPosts);
 
-  // MICHAEL -> I need to move this to a helper method
-  // This is VERY inefficient...I need to make this better N + 1
-  // I also need to handle when it cannot find a post
   for (let i = 0; i < categories.length; i++) {
     const category = categories[i];
     const posts = await PostsReader.findMany({
