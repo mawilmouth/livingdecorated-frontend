@@ -3,9 +3,9 @@ import Head from 'next/head';
 import { BasicLayoutProps } from '../types/layout/BasicLayout';
 import TopNav from './TopNav';
 import Footer from './Footer';
+import HeightBalancer from './HeightBalancer';
 
 const BasicLayout: FC<BasicLayoutProps> = (props: BasicLayoutProps): ReactElement => {
-
   return (
     <div className="page-wrapper layout-container">
       <Head>
@@ -15,13 +15,15 @@ const BasicLayout: FC<BasicLayoutProps> = (props: BasicLayoutProps): ReactElemen
 
       <TopNav categoryPages={props.categoryPages} navPages={props.navPages} />
 
-      <div className="row expanded">
-        <div className="columns small-12 basic-layout-container">
-          <div className="row inner-layout-wrapper">
-            <div className="columns content-container">{props.children}</div>
+      <HeightBalancer>
+        <div className="row expanded">
+          <div className="columns small-12 basic-layout-container">
+            <div className="row inner-layout-wrapper">
+              <div className="columns content-container">{props.children}</div>
+            </div>
           </div>
         </div>
-      </div>
+      </HeightBalancer>
 
       <Footer />
     </div>

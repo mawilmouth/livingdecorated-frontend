@@ -1,6 +1,7 @@
 import { FC, ReactElement } from 'react';
 import Link from 'next/link';
-import { FeaturedPostProps } from '../types/components/FeaturedPost';
+import { FeaturedPostProps } from '../../types/components/FeaturedPost';
+import ScalableImage from '../ScalableImage';
 
 const FeaturedPost: FC<FeaturedPostProps> = (props): ReactElement => {
   const { title, slug, feature_image: featureImage } = props;
@@ -8,9 +9,7 @@ const FeaturedPost: FC<FeaturedPostProps> = (props): ReactElement => {
   return (
     <Link href="/posts/[slug]" as={`/posts/${slug}`}>
       <a className="featured-post-container columns">
-        <div className="image-wrapper">
-          <img className="image" src={featureImage} alt={title} />
-        </div>
+        <ScalableImage src={featureImage} alt={title} />
         <p className="title">{title}</p>
       </a>
     </Link>

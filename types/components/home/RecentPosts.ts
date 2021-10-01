@@ -1,4 +1,4 @@
-import { PostType } from "../lib/ghost/posts";
+import { PostType } from "../../lib/ghost/posts";
 
 export interface RecentPostsProps {
   posts: PostType[];

@@ -1,16 +1,34 @@
 import { FC, ReactElement } from 'react';
+import { GetServerSideProps } from 'next';
 import PagesReader from '../lib/ghost/pages';
 import PostsReader from '../lib/ghost/posts';
-import { PageProps } from '../types/pages/index';
+import TagsReader from '../lib/ghost/tags';
+import { ServerSidePageProps, PageProps } from '../types/pages/index';
 import BasicLayout from '../layout/BasicLayout';
-import RecentPosts from '../components/RecentPosts';
+import RecentPosts from '../components/home/RecentPosts';
+import PostsByCategory from '../components/home/PostsByCategory';
+import { getField } from '../helpers';
 
 const Home: FC<PageProps> = (props): ReactElement => {
-  return (
-    <BasicLayout navPages={props.navPages} categoryPages={props.categoryPages} >
-      <RecentPosts posts={props.recentPosts} />
+  const { navPages, recentPosts, categoryPages, categoriesPosts } = props;
 
-      <div className="body">
+  function renderCategories (): ReactElement[] {
+    return categoriesPosts.map(({ category, posts }, index) => (
+      <PostsByCategory
+        posts={posts}
+        tag={category}
+        key={`category-posts-${index}`}
+      />
+    ));
+  }
+
+  return (
+    <BasicLayout navPages={navPages} categoryPages={categoryPages} >
+      <RecentPosts posts={recentPosts} />
+
+      {renderCategories()}
+  
+      {/* <div className="body">
         <p className="test">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
           <a href="#" className="test">hello lexie</a> has been the industry's standard dummy
@@ -21,20 +39,45 @@ const Home: FC<PageProps> = (props): ReactElement => {
           recently with desktop publishing software <a href="#" className="test">hello lexie</a>
           like Aldus PageMaker including versions of Lorem Ipsum
         </p>
-      </div>
+      </div> */}
     </BasicLayout>
   );
 }
 
-export async function getServerSideProps () {
+export const getServerSideProps: GetServerSideProps = async (): Promise<ServerSidePageProps> => {
   const navPages = await PagesReader.nav();
   const categoryPages = await PagesReader.categories();
+  const categories = await TagsReader.public({ fields: 'id,slug,name' });
   const recentPosts = await PostsReader.recent({
     limit: 4, fields: 'id,slug,title,feature_image'
   });
 
+  let categoriesPosts = [];
+  let excludePostsIds: string[] = getField('id', recentPosts);
+
+  // MICHAEL -> I need to move this to a helper method
+  // This is VERY inefficient...I need to make this better N + 1
+  // I also need to handle when it cannot find a post
+  for (let i = 0; i < categories.length; i++) {
+    const category = categories[i];
+    const posts = await PostsReader.findMany({
+      limit: 1,
+      include: 'tags',
+      formats: 'plaintext,html',
+      fields: 'id,slug,title,feature_image,excerpt',
+      filter: `tag:${categories[i].slug}+id:-[${excludePostsIds}]`
+    });
+
+    if (posts.length) {
+      const postIds: string[] = getField('id', posts);
+
+      excludePostsIds.concat(postIds);
+      categoriesPosts.push({ category, posts });
+    }
+  }
+
   return {
-    props: { navPages, categoryPages, recentPosts }
+    props: { navPages, categoryPages, recentPosts, categoriesPosts }
   };
 }
 
