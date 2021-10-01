@@ -1,0 +1,30 @@
+.post-sneak-peak {
+  .title a {
+    text-decoration: none;
+    color: $standard-black-font;
+    transition: color 200ms;
+
+    &:hover {
+      color: $standard-green-font;
+    }
+  }
+
+  .button-group {
+    .button {
+      margin: 0px 0px 0px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      text-transform: capitalize;
+      font-weight: bold;
+      background-color: $standard-green-font;
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      &:hover, &:focus {
+        background-color: $standard-green-font-variant--1;
+      }
+    }
+  }
+}

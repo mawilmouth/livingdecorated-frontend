@@ -22,10 +22,6 @@ class PostsReader {
     return this.api.read(params);
   }
 
-  async all (): Promise<PostType[]> {
-    return this.findMany();
-  }
-
   async recent (params: GhostApiBrowseParamsType = {}): Promise<PostType[]> {
     return this.findMany({ order: 'published_at DESC', ...params });
   }
