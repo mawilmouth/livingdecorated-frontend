@@ -4,12 +4,23 @@ import { slide as Menu } from 'react-burger-menu'
 import { PageType } from '../types/lib/ghost/pages';
 import { TopNavProps } from '../types/layout/TopNav';
 import SocialMediaLinks from '../components/layout/SocialMediaLinks';
+import defaultNavLinks, { NavLinkType } from '../staticData/defaultNavLinks';
+import LinkToPage from '../components/LinkToPage';
+import LinkToCategory from '../components/LinkToCategory';
+import { loopWithBreak } from '../helpers';
+
+const MAX_NUMBER_OF_NAV_LINKS: number = 6;
 
 const TopNav: FC<TopNavProps> = (props): ReactElement => {
   const [mobileMenuActive, setMobileMenuActive] = useState<boolean>(false);
   const burgerActiveClass: string = mobileMenuActive ? 'active' : '';
+  let navLinkCount: number = 0;
 
-  const navLinks: ReactNode[] = [...renderNavLinks(), ...renderCategoryLinks()];
+  const navLinks: ReactNode[] = [
+    ...renderDefaultLinks(),
+    ...renderNavLinks(),
+    ...renderCategoryLinks()
+  ];
 
   const menuOptions = {
     left: true,
@@ -23,24 +34,74 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
     onClose: () => setMobileMenuActive(!mobileMenuActive)
   };
 
+  function breakLinkRender (): boolean {
+    return navLinkCount >= MAX_NUMBER_OF_NAV_LINKS;
+  }
+
+  function incrementLinkCount (): number {
+    return navLinkCount += 1;
+  }
+
+  function renderLinkListItem (link: ReactNode, keyIndex: number): ReactNode {
+    return (
+      <li className="nav-link" key={`nav-link-${keyIndex}`}>{link}</li>
+    );
+  }
+
   function renderNavLinks (): ReactNode[] {
-    return props.navPages.map((page, index) => (
-      <li className="nav-link" key={`nav-link-${index}`} >
-        <Link href="/[slug]" as={`/${page.slug}`}>
-          <a>{page.title}</a>
-        </Link>
-      </li>
-    ));
+    let links: ReactNode[] = [];
+
+    function callback (page: PageType, index: number): void {
+      const link: ReactNode = (
+        <LinkToPage slug={page.slug}>{page.title}</LinkToPage>
+      );
+
+      links.push(renderLinkListItem(link, navLinkCount));
+
+      incrementLinkCount();
+    }
+
+    loopWithBreak<PageType>(props.navPages, callback, breakLinkRender);
+
+    return links;
   }
 
   function renderCategoryLinks (): ReactNode[] {
-    return props.categoryPages.map((page: PageType, index: number) => (
-      <li className="nav-link" key={`nav-category-${index}`} >
-        <Link href="/posts/[slug]" as={`/posts/${page.slug}`}>
-          <a>{page.title}</a>
+    let links: ReactNode[] = [];
+
+    function callback (page: PageType, index: number): void {
+      const link: ReactNode = (
+        <LinkToCategory slug={page.slug}>{page.title}</LinkToCategory>
+      );
+
+      links.push(renderLinkListItem(link, navLinkCount));
+
+      incrementLinkCount();
+    }
+
+    loopWithBreak<PageType>(props.categoryPages, callback, breakLinkRender);
+
+    return links;
+  }
+
+  function renderDefaultLinks (): ReactNode[] {
+    let links: ReactNode[] = [];
+
+    function callback (linkData: NavLinkType, index: number): void {
+      const link: ReactNode = (
+        <Link href={linkData.href}>
+          <a>{linkData.title}</a>
         </Link>
-      </li>
-    ));
+      );
+
+      links.push(renderLinkListItem(link, navLinkCount));
+
+      incrementLinkCount();
+    }
+
+    loopWithBreak<NavLinkType>(defaultNavLinks, callback, breakLinkRender);
+
+    return links;
   }
 
   function toggleMobileMenu (): void {
