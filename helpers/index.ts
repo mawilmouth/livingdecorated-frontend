@@ -1,3 +1,5 @@
+import loopWithBreak from './loopWithBreak';
+
 export const getField = (field: string, arr: any[]): any[] => {
   return arr.reduce((acc, item) => {
     if (item[field] != null) acc.push(item[field]);
@@ -14,3 +16,5 @@ export const trimString = (
 
   return `${string.substring(0, length)}${appendWith}`
 };
+
+export { loopWithBreak };
