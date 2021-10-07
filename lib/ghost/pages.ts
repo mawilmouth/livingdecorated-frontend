@@ -27,6 +27,10 @@ class PagesReader {
     return this.api.read(params);
   }
 
+  async findBySlug (slug: string, params: GhostApiReadParamsType = {}): Promise<PageType> {
+    return this.find({ ...params, slug });
+  }
+
   async nav ({ includeContent = false }: CustomSearchParams = {}): Promise<PageType[]> {
     const params = { filter: PageSearch.Nav };
 
