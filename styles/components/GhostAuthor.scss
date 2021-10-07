@@ -1,0 +1,14 @@
+.ghost-author {
+  @include flex-align(row, flex-start, center);
+
+  .profile-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+  }
+
+  .name {
+    margin: 0px 0px 0px 10px;
+    font-size: 16px;
+  }
+}

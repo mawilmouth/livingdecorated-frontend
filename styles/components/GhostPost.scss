@@ -1,0 +1,33 @@
+.ghost-post .columns {
+  @extend .ghost-content;
+  
+  .title {
+    margin-bottom: 0px;
+  }
+
+  .excerpt {
+    color: $standard-grey-font;
+  }
+
+  .post-info {
+    max-width: $post-width;
+    width: 100%;
+    margin-bottom: 20px;
+    @include flex-align(row, flex-start, center);
+    flex-wrap: wrap;
+
+    .read-time, .published-date {
+      max-width: unset;
+      width: auto;
+      margin: 10px;
+      font-size: 16px;
+      color: $standard-grey-font;
+    }
+
+    @include screenbreak($medium) {
+      .read-time, .published-date {
+        margin: 0px 0px 0px 20px;
+      }
+    }
+  }
+}

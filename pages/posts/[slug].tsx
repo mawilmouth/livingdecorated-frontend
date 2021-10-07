@@ -1,30 +1,34 @@
 import { FC, ReactElement } from 'react';
-import Head from 'next/head';
+import type { GetServerSidePropsContext } from 'next';
 import PagesReader from '../../lib/ghost/pages';
+import PostsReader from '../../lib/ghost/posts';
 import { PageProps } from '../../types/pages/index';
-import TopNav from '../../layout/TopNav';
+import BasicLayout from '../../layout/BasicLayout';
+import { PostType } from '../../types/lib/ghost/posts';
+import GhostPost from '../../components/GhostPost';
 
-const Post: FC<PageProps> = (props): ReactElement => {
+interface PostsPostProps extends PageProps {
+  post: PostType;
+}
+
+const Post: FC<PostsPostProps> = ({ post, navPages, categoryPages }): ReactElement => {
   return (
-    <div className="page-wrapper">
-      <Head>
-        <title>LivingDecorated</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <TopNav navPages={props.navPages} categoryPages={props.categoryPages} />
-
-      posts show
-    </div>
+    <BasicLayout navPages={navPages} categoryPages={categoryPages}>
+      <GhostPost post={post} />
+    </BasicLayout>
   );
 }
 
-export async function getServerSideProps () {
+export async function getServerSideProps (ctx: GetServerSidePropsContext) {
   const navPages = await PagesReader.nav();
   const categoryPages = await PagesReader.categories();
-
+  const post = await PostsReader.findBySlug(
+    ctx.query.slug as string || '',
+    { include: 'authors' }
+  );
+  
   return {
-    props: { navPages, categoryPages }
+    props: { post, navPages, categoryPages }
   };
 }
 

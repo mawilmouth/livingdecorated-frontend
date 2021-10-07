@@ -26,6 +26,9 @@
 
 // Components
 @import './components/ScalableImage';
+@import './components/GhostContent';
+@import './components/GhostAuthor';
+@import './components/GhostPost';
 @import './components/home/FeaturedPost';
 @import './components/home/RecentPosts';
 @import './components/home/PostsByCategory';
@@ -45,24 +48,4 @@ body {
 
 * {
   box-sizing: border-box;
-}
-
-
-p.test {
-  font-size: 18px;
-  max-width: 1000px;
-  text-align: left;
-
-  a.test {
-    display: inline-block;
-    text-decoration: none;
-    text-align: center;
-    color: $standard-green-font;
-    transition: color 200ms;
-  
-    &:hover {
-      text-decoration: underline;
-      color: $standard-green-font-variant--1;
-    }
-  }
 }
