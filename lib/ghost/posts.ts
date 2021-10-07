@@ -25,6 +25,10 @@ class PostsReader {
   async recent (params: GhostApiBrowseParamsType = {}): Promise<PostType[]> {
     return this.findMany({ order: 'published_at DESC', ...params });
   }
+
+  async findBySlug (slug: string, params: GhostApiReadParamsType = {}): Promise<PostType> {
+    return this.find({ ...params, slug });
+  }
 }
 
 export default new PostsReader(ghost);
