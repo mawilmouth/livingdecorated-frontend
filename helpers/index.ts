@@ -1,4 +1,5 @@
 import loopWithBreak from './loopWithBreak';
+import renderFeatureImage from './renderFeatureImage';
 
 export const getField = (field: string, arr: any[]): any[] => {
   return arr.reduce((acc, item) => {
@@ -17,4 +18,4 @@ export const trimString = (
   return `${string.substring(0, length)}${appendWith}`
 };
 
-export { loopWithBreak };
+export { loopWithBreak, renderFeatureImage };

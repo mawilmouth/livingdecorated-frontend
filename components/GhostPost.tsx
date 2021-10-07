@@ -3,12 +3,13 @@ import GhostContent from  './GhostContent';
 import GhostAuthor from  './GhostAuthor';
 import { PostType } from '../types/lib/ghost/posts';
 import moment, { Moment } from 'moment';
+import { renderFeatureImage } from '../helpers';
 
 interface GhostPostProps {
   post: PostType;
 }
 
-const GhostPost: FC<GhostPostProps> = (props): ReactElement => {
+const GhostPost: FC<GhostPostProps> = ({ post }): ReactElement => {
   const {
     title,
     excerpt,
@@ -16,8 +17,7 @@ const GhostPost: FC<GhostPostProps> = (props): ReactElement => {
     primary_author: primaryAuthor,
     reading_time: readingTime,
     published_at: publishedAt,
-    feature_image: featureImage
-  } = props.post;
+  } = post;
 
   const readTime: string = `- ${readingTime || 5} minute read -`;
 
@@ -46,7 +46,7 @@ const GhostPost: FC<GhostPostProps> = (props): ReactElement => {
           {renderDate()}
           <p className="read-time">{readTime}</p>
         </div>
-        <img src={featureImage} alt={title} />
+        {renderFeatureImage(post)}
         <GhostContent content={html} />
       </div>
     </div>
