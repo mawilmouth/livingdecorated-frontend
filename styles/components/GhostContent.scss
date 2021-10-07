@@ -1,0 +1,35 @@
+.ghost-content {
+  @include flex-align(column, flex-start, center);
+  font-size: 18px;
+
+  p, ul, .title, figure iframe, blockquote {
+    max-width: $post-width;
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+    color: $standard-green-font-variant--1;
+  
+    &:hover {
+      text-decoration: underline;
+      color: $standard-green-font;
+    }
+  }
+
+  figure {
+    width: 100%;
+    margin: 0px;
+    @include flex-align(column, center, center);
+
+    figcaption {
+      width: 100%;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    iframe {
+      height: auto;
+    }
+  }
+}
