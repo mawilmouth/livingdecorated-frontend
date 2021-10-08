@@ -29,10 +29,13 @@
 @import './components/GhostContent';
 @import './components/GhostAuthor';
 @import './components/GhostPost';
-@import './components/home/FeaturedPost';
+@import './components/PostPreview';
 @import './components/home/RecentPosts';
 @import './components/home/PostsByCategory';
 @import './components/home/PostSneakPeak';
+
+// Pages
+@import './pages/posts/index';
 
 body {
   margin: 0px;

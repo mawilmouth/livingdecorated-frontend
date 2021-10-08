@@ -1,11 +1,11 @@
 import { FC, ReactElement, Fragment } from 'react';
 import { RecentPostsProps } from '../../types/components/home/RecentPosts';
-import FeaturedPost from './FeaturedPost';
+import PostPreview from '../PostPreview';
 
 const RecentPosts: FC<RecentPostsProps> = (props): ReactElement => {
   function renderPosts (): ReactElement[] {
     return props.posts.map((post, index) => (
-      <FeaturedPost {...post} key={`featured-post-${index}`} />
+      <PostPreview {...post} showInfo={false} key={`featured-post-${index}`} />
     ));
   }
 
