@@ -23,6 +23,10 @@ class TagsReader {
     return this.api.read(params);
   }
 
+  async findBySlug (slug: string, params: GhostApiReadParamsType = {}): Promise<TagType> {
+    return this.find({ ...params, slug });
+  }
+
   async all (): Promise<TagType[]> {
     return this.findMany();
   }
