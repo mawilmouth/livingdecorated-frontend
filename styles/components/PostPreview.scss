@@ -1,0 +1,61 @@
+.post-preview-container {
+  margin-bottom: 25px;
+
+  @include screenbreak($large) {
+    margin-bottom: 15px;
+  }
+
+  a {
+    text-decoration: none;
+  
+    &:first-child {
+      margin-left: 0px;
+    }
+  
+    &:last-child {
+      margin-right: 0px;
+    }
+  
+    .title {
+      margin: 10px 0px 0px;
+      font-size: 18px;
+      font-weight: 600;
+      transition: color 200ms;
+      color: $standard-black-font;
+    }
+
+    .post-info {
+      @include flex-align(row, flex-start, center);
+      flex-wrap: row;
+      margin-top: 10px;
+      font-size: 14px;
+      color: $standard-black-font;
+
+      .ghost-author {
+        .profile-image {
+          width: 30px;
+          height: 30px;
+        }
+
+        .name {
+          margin-left: 5px;
+          font-size: 14px;
+        }
+      }
+
+      p {
+        margin: 0px;
+
+        &:not(:first-child) {
+          margin-right: 10px;
+        }
+      }
+    }
+  
+    &:hover {
+      .title {
+        color: $standard-green-font;
+      }
+    }
+  }
+}
