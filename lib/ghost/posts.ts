@@ -29,6 +29,10 @@ class PostsReader {
   async findBySlug (slug: string, params: GhostApiReadParamsType = {}): Promise<PostType> {
     return this.find({ ...params, slug });
   }
+
+  async findManyByCategory (tagSlug: string, params: GhostApiBrowseParamsType = {}): Promise<PostType[]> {
+    return this.findMany({ ...params, filter: `tag:${tagSlug}` });
+  }
 }
 
 export default new PostsReader(ghost);
