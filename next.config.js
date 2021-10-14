@@ -6,9 +6,9 @@ module.exports = {
   },
 
   env: {
-    ghostHost: process.env.GHOST_HOST,
+    ghostUrl: process.env.GHOST_URL,
     ghostContentKey: process.env.GHOST_CONTENT_KEY,
-    ghostContentVersion: process.env.GHOST_CONTENT_VERSION
+    ghostContentVersion: process.env.GHOST_VERSION
   },
 
   webpack(config, options) {
