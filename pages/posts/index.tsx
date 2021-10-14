@@ -10,6 +10,9 @@ import { PageType } from '../../types/lib/ghost/pages';
 import FeaturedPost from '../../components/PostPreview';
 import { GhostApiBrowseParamsType } from '../../types/lib/ghost';
 import { TagType } from '../../types/lib/ghost/tags';
+import { SeoType } from '../../types/layout/Seo';
+import { getPageSettings } from '../../helpers/server';
+import env from '../../constants/env';
 
 interface PostsProps extends LayoutProps {
   posts: PostType[];
@@ -21,7 +24,7 @@ interface ServerSideProps {
 }
 
 const Posts: FC<PostsProps> = (props): ReactElement => {
-  const { posts, category, navPages, categoryPages } = props;
+  const { seoData, posts, category, navPages, categoryPages } = props;
 
   function renderPosts (): ReactElement[] {
     return posts.map((post: PostType, index: number) => (
@@ -33,7 +36,11 @@ const Posts: FC<PostsProps> = (props): ReactElement => {
 
   return (
     <div className="posts-index">
-      <BasicLayout navPages={navPages} categoryPages={categoryPages}>
+      <BasicLayout
+        seoData={seoData}
+        navPages={navPages}
+        categoryPages={categoryPages}
+      >
         <div className="row">
           <div className="columns">
             <h1 className="page-title">{pageTitle}</h1>
@@ -79,8 +86,17 @@ const getServerSideProps: GetServerSideProps = async (
     }
   }
 
+  let ogUrl: string = `${env.appURL}/posts`;
+  
+  if (category) ogUrl = `${ogUrl}?category=${categorySlug}`;
+
+  const seoData: SeoType = {
+    ...await getPageSettings(),
+    og_url: ogUrl
+  }; 
+
   return {
-    props: { posts, category, navPages, categoryPages }
+    props: { seoData, posts, category, navPages, categoryPages }
   };
 }
 

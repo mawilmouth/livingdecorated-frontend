@@ -5,6 +5,9 @@ import { LayoutProps } from '../types/pages/index';
 import { PageType } from '../types/lib/ghost/pages';
 import BasicLayout from '../layout/BasicLayout';
 import GhostPage from '../components/GhostPage';
+import { getPageSettings } from '../helpers/server';
+import { SeoType } from '../types/layout/Seo';
+import env from '../constants/env';
 
 interface DynamicPageProps extends LayoutProps {
   page: PageType;
@@ -14,8 +17,14 @@ interface ServerSideProps {
   props: DynamicPageProps;
 }
 
-const DynamicPage: FC<DynamicPageProps> = ({ page, navPages, categoryPages }): ReactElement => (
-  <BasicLayout navPages={navPages} categoryPages={categoryPages}>
+const DynamicPage: FC<DynamicPageProps> = ({
+  seoData, page, navPages, categoryPages
+}): ReactElement => (
+  <BasicLayout
+    seoData={seoData}
+    navPages={navPages}
+    categoryPages={categoryPages}
+  >
     <GhostPage page={page} />
   </BasicLayout>
 );
@@ -23,14 +32,19 @@ const DynamicPage: FC<DynamicPageProps> = ({ page, navPages, categoryPages }): R
 const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<ServerSideProps> => {
+  const slug: string = ctx.query.slug as string || '' ;
   const navPages: PageType[] = await PagesReader.nav();
   const categoryPages = await PagesReader.categories();
-  const page: PageType = await PagesReader.findBySlug(
-    ctx.query.slug as string || ''
-  );
+  const page: PageType = await PagesReader.findBySlug(slug);
+
+  const seoData: SeoType = {
+    ...await getPageSettings(),
+    ...page,
+    og_url: `${env.appURL}/${slug}`
+  }; 
 
   return {
-    props: { page, navPages, categoryPages }
+    props: { seoData, page, navPages, categoryPages }
   };
 }
 

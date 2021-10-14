@@ -1,5 +1,6 @@
 import { FC, ReactElement } from 'react';
 import SocialMediaLinks from '../components/layout/SocialMediaLinks';
+import { SITE_NAME_PASCAL_CASE } from '../constants';
 
 const Footer: FC<{}> = (): ReactElement => {
   return (
@@ -11,7 +12,7 @@ const Footer: FC<{}> = (): ReactElement => {
       </div>
       <div className="columns">
         <p className="copyright">
-          Copyright &copy; 2021 LivingDecorated.com. All rights reserved.
+          Copyright &copy; 2021 {SITE_NAME_PASCAL_CASE}.com. All rights reserved.
         </p>
       </div>
     </div>

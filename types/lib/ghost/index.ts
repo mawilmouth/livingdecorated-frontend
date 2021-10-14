@@ -3,11 +3,16 @@ export interface ReaderType {
   read: (params: any) => any;
 }
 
+export interface SettingsReaderType {
+  browse: () => any;
+}
+
 export interface GhostApiType {
   pages: ReaderType;
   posts: ReaderType;
   tags: ReaderType;
   authors: ReaderType;
+  settings: SettingsReaderType;
 };
 
 export interface GhostApiReadParamsType {
