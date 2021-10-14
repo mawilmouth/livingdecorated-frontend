@@ -1,5 +1,5 @@
 export interface Env {
-  ghostHost: string;
+  ghostUrl: string;
+  ghostVersion: "v2" | "v3" | "canary";
   ghostContentKey: string;
-  ghostContentVersion: string;
 };

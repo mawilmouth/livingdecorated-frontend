@@ -26,8 +26,6 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
     left: true,
     pageWrapId: 'contentWrapper',
     outerContainer: 'layoutContainer',
-    customBurgerIcon: false,
-    customCrossIcon: false,
     className: mobileMenuActive ? 'active' : '',
     width: '300px',
     isOpen: mobileMenuActive,
