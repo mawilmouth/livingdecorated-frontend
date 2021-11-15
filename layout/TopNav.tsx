@@ -1,7 +1,8 @@
 import { FC, ReactElement, ReactNode, Fragment, useState } from 'react';
 import Link from 'next/link';
 import { slide as Menu } from 'react-burger-menu'
-import { PageType } from '../types/lib/ghost/pages';
+import type { Props as MenuProps } from 'react-burger-menu';
+import type { PageType } from '../types/lib/ghost/pages';
 import { TopNavProps } from '../types/layout/TopNav';
 import SocialMediaLinks from '../components/layout/SocialMediaLinks';
 import defaultNavLinks, { NavLinkType } from '../staticData/defaultNavLinks';
@@ -22,14 +23,14 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
     ...renderCategoryLinks()
   ];
 
-  const menuOptions = {
-    left: true,
-    pageWrapId: 'contentWrapper',
-    outerContainer: 'layoutContainer',
-    className: mobileMenuActive ? 'active' : '',
+  const menuOptions: MenuProps = {
+    right: false,
     width: '300px',
+    customCrossIcon: false,
+    customBurgerIcon: false,
     isOpen: mobileMenuActive,
-    onClose: () => setMobileMenuActive(!mobileMenuActive)
+    onClose: closeMobileMenu,
+    className: mobileMenuActive ? 'active' : '',
   };
 
   function breakLinkRender (): boolean {
@@ -104,6 +105,10 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
 
   function toggleMobileMenu (): void {
     setMobileMenuActive(!mobileMenuActive);
+  }
+
+  function closeMobileMenu (): void {
+    setMobileMenuActive(false);
   }
 
   return (
