@@ -22,7 +22,7 @@ const PostsByCategory: FC<PostsByCategoryType>  = (props): ReactElement | null =
 
   return (
     <div className="row posts-by-category">
-      <div className="columns category-title">
+      <div className="columns">
         <h2 className="category-title">{props.tag.name}</h2>
       </div>
       {renderPosts(props.posts)}  
