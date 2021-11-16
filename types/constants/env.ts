@@ -1,5 +1,8 @@
+export type VersionType = "v2" | "v3" | "canary";
+
 export interface Env {
-  ghostUrl: string;
-  ghostVersion: "v2" | "v3" | "canary";
+  appURL: string;
+  ghostURL: string;
   ghostContentKey: string;
+  ghostVersion: VersionType;
 };

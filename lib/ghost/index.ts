@@ -3,7 +3,7 @@ import env from '../../constants/env';
 import { GhostApiType } from '../../types/lib/ghost';
 
 const ghost: GhostApiType = new GhostApi({
-  url: env.ghostUrl,
+  url: env.ghostURL,
   key: env.ghostContentKey,
   version: env.ghostVersion
 });

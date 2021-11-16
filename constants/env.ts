@@ -1,9 +1,10 @@
-import { Env } from '../types/constants/env';
+import { Env, VersionType } from '../types/constants/env';
 
 const env: Env = {
-  ghostUrl: process.env.GHOST_URL,
-  ghostVersion: process.env.GHOST_VERSION,
-  ghostContentKey: process.env.GHOST_CONTENT_KEY
-} as Env;
+  appURL: process.env.APP_URL!,
+  ghostURL: process.env.GHOST_URL!,
+  ghostContentKey: process.env.GHOST_CONTENT_KEY!,
+  ghostVersion: process.env.GHOST_VERSION! as VersionType
+};
 
 export default env;

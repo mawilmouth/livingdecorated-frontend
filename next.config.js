@@ -6,9 +6,10 @@ module.exports = {
   },
 
   env: {
-    ghostUrl: process.env.GHOST_URL,
+    appURL: process.env.APP_URL,
+    ghostURL: process.env.GHOST_URL,
     ghostContentKey: process.env.GHOST_CONTENT_KEY,
-    ghostContentVersion: process.env.GHOST_VERSION
+    ghostVersion: process.env.GHOST_VERSION
   },
 
   webpack(config, options) {
