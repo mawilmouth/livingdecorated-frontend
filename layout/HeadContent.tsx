@@ -15,8 +15,6 @@ const HeadContent: FC<HeadContentProps> = (props): ReactElement => {
     keywords ? arrToKeywords(keywords) : descriptionAsKeywords()
   );
 
-  console.log(props)
-
   function arrToKeywords (arr: string[]): string {
     return arr.join(',');
   }

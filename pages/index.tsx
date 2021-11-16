@@ -15,8 +15,6 @@ import env from '../constants/env';
 const Home: FC<PageProps> = (props): ReactElement => {
   const { navPages, recentPosts, categoryPages, categoriesPosts, seoData } = props;
 
-  console.log(seoData);
-
   function renderCategories (): ReactElement[] {
     return categoriesPosts.map(({ category, posts }, index) => (
       <PostsByCategory
