@@ -1,7 +1,6 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
+import type { PostType } from '../types/lib/ghost/posts';
 import GhostContent from  './GhostContent';
-import { PostType } from '../types/lib/ghost/posts';
-import { renderFeatureImage } from '../helpers';
 import PostInfo from './PostInfo';
 
 interface GhostPostProps {
@@ -17,7 +16,6 @@ const GhostPost: FC<GhostPostProps> = ({ post }): ReactElement => {
         <h1 className="title">{title}</h1>
         <p className="excerpt">{excerpt}</p>
         <PostInfo {...post} />
-        {renderFeatureImage(post)}
         <GhostContent content={html} />
       </div>
     </div>
