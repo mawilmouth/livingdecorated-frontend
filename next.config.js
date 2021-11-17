@@ -8,8 +8,9 @@ module.exports = {
   env: {
     appURL: process.env.APP_URL,
     ghostURL: process.env.GHOST_URL,
+    ghostVersion: process.env.GHOST_VERSION,
     ghostContentKey: process.env.GHOST_CONTENT_KEY,
-    ghostVersion: process.env.GHOST_VERSION
+    gaId: process.env.NEXT_PUBLIC_GA_ID
   },
 
   webpack(config, options) {
