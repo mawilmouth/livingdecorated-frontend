@@ -18,7 +18,7 @@ const GhostPost: FC<GhostPostProps> = ({ post }): ReactElement => {
         <h1 className="title">{title}</h1>
         <p className="excerpt">{excerpt}</p>
         <PostInfo {...post} />
-        <GhostContent content={html} />
+        <GhostContent content={html as string} />
       </div>
     </div>
   );

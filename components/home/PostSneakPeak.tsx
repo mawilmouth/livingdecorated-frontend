@@ -6,14 +6,14 @@ import LinkToCategory from '../LinkToCategory';
 import { trimString } from '../../helpers';
 
 const PostSneakPeak: FC<PostSneakPeakProps> = ({ post, category }): ReactElement => {
-  const trimmedExcerpt: string = trimString(post.excerpt, 255, '...');
+  const trimmedExcerpt: string = post.excerpt ? trimString(post.excerpt, 255, '...') : '';
 
   return (
     <div className="columns-12 post-sneak-peak">
       <div className="row">
         <div className="columns small-12 medium-6 large-4">
           <LinkToPost slug={post.slug}>
-            <ScalableImage src={post.feature_image} alt={post.title} />
+            <ScalableImage src={post.feature_image || ''} alt={post.title} />
           </LinkToPost>
         </div>
         <div className="columns">

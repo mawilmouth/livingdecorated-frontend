@@ -2,13 +2,13 @@ import type { FC, ReactElement } from 'react';
 import type { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import type { LayoutProps } from '../../types/pages/index';
 import type { PostType } from '../../types/lib/ghost/posts';
+import type { SeoType } from '../../types/lib/ghost/seo';
 import PagesReader from '../../lib/ghost/pages';
 import PostsReader from '../../lib/ghost/posts';
 import BasicLayout from '../../layout/BasicLayout';
 import GhostPost from '../../components/GhostPost';
 import { getPageSettings } from '../../helpers/server';
 import env from '../../constants/env';
-import { SeoType } from '../../types/layout/Seo';
 
 interface PostsPostProps extends LayoutProps {
   post: PostType;
@@ -40,7 +40,7 @@ const getServerSideProps: GetServerSideProps = async (
 
   const seoData: SeoType = {
     ...await getPageSettings(),
-    ...post,
+    ...post as SeoType,
     description: post.excerpt,
     og_url: `${env.appURL}/posts/${slug}`
   }; 

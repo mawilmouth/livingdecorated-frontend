@@ -1,7 +1,7 @@
 import type { FC, ReactElement } from 'react';
 import type { GetServerSideProps } from 'next';
 import type { ServerSidePageProps, PageProps } from '../types/pages/index';
-import type { SeoType } from '../types/layout/Seo';
+import type { SeoType } from '../types/lib/ghost/seo';
 import PagesReader from '../lib/ghost/pages';
 import PostsReader from '../lib/ghost/posts';
 import TagsReader from '../lib/ghost/tags';

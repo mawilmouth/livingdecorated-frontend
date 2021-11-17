@@ -1,6 +1,6 @@
 import type { FC, ReactElement } from 'react';
 import type { PageType } from '../types/lib/ghost/pages';
-import type { SeoType } from '../types/layout/Seo';
+import type { SeoType } from '../types/lib/ghost/seo';
 import TopNav from './TopNav';
 import Footer from './Footer';
 import HeightBalancer from './HeightBalancer';

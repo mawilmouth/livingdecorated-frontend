@@ -19,7 +19,7 @@ const PostInfo: FC<PostInfoProps> = (props): ReactElement => {
   const readTime: string = `${readingTime || 5} min read`;
 
   function renderDate (): ReactElement | null {
-    if (!publishedAt.length) return null;
+    if (!publishedAt?.length) return null;
 
     const date: Moment = moment(publishedAt);
     const dateString: string = dateAsAgo ?
