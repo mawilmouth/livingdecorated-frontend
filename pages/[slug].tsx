@@ -1,12 +1,12 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
 import type { GetServerSidePropsContext, GetServerSideProps } from 'next';
+import type { SeoType } from '../types/lib/ghost/seo';
+import type { PageType } from '../types/lib/ghost/pages';
+import type { LayoutProps } from '../types/pages/index';
 import PagesReader from '../lib/ghost/pages';
-import { LayoutProps } from '../types/pages/index';
-import { PageType } from '../types/lib/ghost/pages';
 import BasicLayout from '../layout/BasicLayout';
 import GhostPage from '../components/GhostPage';
 import { getPageSettings } from '../helpers/server';
-import { SeoType } from '../types/layout/Seo';
 import env from '../constants/env';
 
 interface DynamicPageProps extends LayoutProps {

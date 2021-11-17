@@ -18,7 +18,7 @@ const PostPreview: FC<PostPreviewProps> = (props): ReactElement => {
   return (
     <div className="post-preview-container columns">
       <LinkToPost slug={slug}>
-        <ScalableImage src={featureImage} alt={title} />
+        <ScalableImage src={featureImage || ''} alt={title} />
         <p className="title">{title}</p>
         {renderInfo()}
       </LinkToPost>

@@ -1,5 +1,5 @@
 import type { FC, ReactElement } from 'react';
-import type { SeoType } from '../types/layout/Seo';
+import type { SeoType } from '../types/lib/ghost/seo';
 import Head from 'next/head';
 import { SITE_NAME_PASCAL_CASE } from '../constants';
 

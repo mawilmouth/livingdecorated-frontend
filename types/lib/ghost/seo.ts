@@ -1,10 +1,6 @@
-export interface SeoType {
-  meta_description?: string;
-  meta_title?: string;
-  og_description?: string;
-  og_image?: string;
-  og_title?: string;
-  twitter_description?: string;
-  twitter_image?: string;
-  twitter_title?: string;
-}
+import { Metadata, Settings, SocialMedia } from "@tryghost/content-api";
+
+export interface SeoType extends SocialMedia, Metadata, Settings {
+  keywords?: string[];
+  og_url?: string;
+};

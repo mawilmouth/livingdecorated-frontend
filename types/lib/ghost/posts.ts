@@ -1,7 +1,3 @@
-import { AuthorType } from "./authors";
-import { PageType } from "./pages";
+import type { PostOrPage } from "@tryghost/content-api";
 
-export interface PostType extends PageType {
-  primary_author?: AuthorType;
-  authors?: AuthorType[];
-}
+export interface PostType extends PostOrPage {};

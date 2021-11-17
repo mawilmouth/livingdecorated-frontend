@@ -1,16 +1,17 @@
 import type { FC, ReactElement } from 'react';
 import type { GetServerSidePropsContext, GetServerSideProps } from 'next';
+import type { SeoType } from '../../types/lib/ghost/seo';
+import type { LayoutProps } from '../../types/pages/index';
+import type { PostType } from '../../types/lib/ghost/posts';
+import type { PageType } from '../../types/lib/ghost/pages';
+import type { GhostApiBrowseParamsType } from '../../types/lib/ghost';
+import type { TagType } from '../../types/lib/ghost/tags';
+import type { Pagination, PostsOrPages } from '@tryghost/content-api';
 import PagesReader from '../../lib/ghost/pages';
 import PostsReader from '../../lib/ghost/posts';
 import TagReader from '../../lib/ghost/tags';
-import { LayoutProps } from '../../types/pages/index';
 import BasicLayout from '../../layout/BasicLayout';
-import { PostType } from '../../types/lib/ghost/posts';
-import { PageType } from '../../types/lib/ghost/pages';
 import FeaturedPost from '../../components/PostPreview';
-import { GhostApiBrowseParamsType } from '../../types/lib/ghost';
-import { TagType } from '../../types/lib/ghost/tags';
-import { SeoType } from '../../types/layout/Seo';
 import { getPageSettings } from '../../helpers/server';
 import env from '../../constants/env';
 
@@ -65,11 +66,11 @@ const getServerSideProps: GetServerSideProps = async (
     include: 'authors'
   };
 
-  const findAllPosts = async (): Promise<PostType[]> => (
-    PostsReader.findMany(postsParams)
+  const findAllPosts = async (params = postsParams): Promise<PostsOrPages> => (
+    PostsReader.findMany(params)
   );
 
-  let posts: PostType[] = [];
+  let posts: PostsOrPages;
   let category: TagType | null = null;
 
   if (!categorySlug.length) {
@@ -94,6 +95,22 @@ const getServerSideProps: GetServerSideProps = async (
     ...await getPageSettings(),
     og_url: ogUrl
   }; 
+
+  const pagination: Pagination = posts?.meta?.pagination;
+
+  if (pagination) {
+    const totalPages: number = pagination.pages;
+    let nextPage: number = pagination.page + 1;
+
+    while (nextPage <= totalPages) {
+      const params = { ...postsParams, page: nextPage };
+      const pagePosts: PostsOrPages = await findAllPosts(params);
+
+      pagePosts.forEach(post => posts[posts.length] = post);
+
+      nextPage++;
+    }
+  }
 
   return {
     props: { seoData, posts, category, navPages, categoryPages }
