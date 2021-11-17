@@ -7,11 +7,11 @@ export interface DataType {
 }
 
 const data: DataType = {
-  facebook: '#',
-  instagram: '#',
+  facebook: 'https://www.facebook.com/alexis.branum',
+  instagram: 'https://www.instagram.com/b_ranum/',
   pinterest: '#',
   youtube: '#',
-  etsy: '#'
+  etsy: 'https://www.etsy.com/shop/LivingDecorated'
 };
 
 export default data;
