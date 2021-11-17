@@ -1,10 +1,12 @@
 .ghost-post, .ghost-page {
-  .columns {
-    @extend .ghost-content;
-  
-    .title {
+  &.ghost-post {
+    .columns .title {
       margin-bottom: 0px;
     }
+  }
+
+  .columns {
+    @extend .ghost-content;
 
     .excerpt {
       color: $standard-grey-font;

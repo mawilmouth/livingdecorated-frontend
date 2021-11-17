@@ -1,6 +1,6 @@
-import { FC, ReactElement } from 'react';
+import type { FC, ReactElement } from 'react';
+import type { PageType } from '../types/lib/ghost/pages';
 import GhostContent from  './GhostContent';
-import { PageType } from '../types/lib/ghost/pages';
 import { renderFeatureImage } from '../helpers';
 
 interface GhostPageProps {
@@ -13,8 +13,8 @@ const GhostPage: FC<GhostPageProps> = ({ page }): ReactElement => {
   return (
     <div className="ghost-page row">
       <div className="columns">
-        <h1 className="title">{title}</h1>
         {renderFeatureImage(page)}
+        <h1 className="title">{title}</h1>
         <GhostContent content={html} />
       </div>
     </div>
