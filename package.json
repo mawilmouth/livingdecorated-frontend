@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tryghost/content-api": "^1.5.9",
+    "@types/google.analytics": "^0.0.42",
     "foundation-sites": "^6.6.3",
     "moment": "^2.29.1",
     "next": "^11.0.1",
