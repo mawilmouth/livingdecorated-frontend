@@ -92,8 +92,8 @@
   top: 0px;
   left: 0px;
   z-index: 2000;
-  background-color: $standard-white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  background-color: $standard-white--variant-2;
+  opacity: 0.95;
 
   .row {
     height: 100%;
