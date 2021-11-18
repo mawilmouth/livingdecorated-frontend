@@ -70,6 +70,10 @@ const getServerSideProps: GetServerSideProps = async (
     PostsReader.findMany(params)
   );
 
+  const findAllPostsByCategory = async (
+    slug = categorySlug, params = postsParams
+  ): Promise<PostsOrPages> => PostsReader.findManyByCategory(slug, params);
+
   let posts: PostsOrPages;
   let category: TagType | null = null;
 
@@ -81,7 +85,7 @@ const getServerSideProps: GetServerSideProps = async (
         fields: 'id,slug,name'
       });
 
-      posts = await PostsReader.findManyByCategory(categorySlug, postsParams);
+      posts = await findAllPostsByCategory();
     } catch (ex) {
       posts = await findAllPosts();
     }
@@ -104,7 +108,9 @@ const getServerSideProps: GetServerSideProps = async (
 
     while (nextPage <= totalPages) {
       const params = { ...postsParams, page: nextPage };
-      const pagePosts: PostsOrPages = await findAllPosts(params);
+      const pagePosts: PostsOrPages = category ?
+        await findAllPostsByCategory(categorySlug, params) :
+        await findAllPosts(params);
 
       pagePosts.forEach(post => posts[posts.length] = post);
 
