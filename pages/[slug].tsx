@@ -35,7 +35,14 @@ const getServerSideProps: GetServerSideProps = async (
   const slug: string = ctx.query.slug as string || '' ;
   const navPages: PageType[] = await PagesReader.nav();
   const categoryPages = await PagesReader.categories();
-  const page: PageType = await PagesReader.findBySlug(slug);
+  let page: PageType;
+
+  try {
+    page = await PagesReader.findBySlug(slug)
+  } catch (e) {
+    // @ts-ignore
+    return { notFound: true };
+  };
 
   const seoData: SeoType = {
     ...await getPageSettings(),
@@ -44,7 +51,12 @@ const getServerSideProps: GetServerSideProps = async (
   }; 
 
   return {
-    props: { seoData, page, navPages, categoryPages }
+    props: {
+      seoData,
+      page,
+      navPages,
+      categoryPages
+    }
   };
 }
 

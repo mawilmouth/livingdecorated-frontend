@@ -36,7 +36,14 @@ const getServerSideProps: GetServerSideProps = async (
   const slug: string = ctx.query.slug as string || '' ;
   const navPages = await PagesReader.nav();
   const categoryPages = await PagesReader.categories();
-  const post = await PostsReader.findBySlug(slug, { include: 'authors' });
+  let post: PostType;
+
+  try {
+    post = await PostsReader.findBySlug(slug, { include: 'authors' })
+  } catch (e) {
+    // @ts-ignore
+    return { notFound: true };
+  };
 
   const seoData: SeoType = {
     ...await getPageSettings(),
