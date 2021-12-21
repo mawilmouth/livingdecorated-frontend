@@ -5,9 +5,206 @@
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
   <url>
-    <loc>https://livingdecorated.com</loc>
+    <loc>https://livingdecorated.com/</loc>
   </url>
+
   <url>
     <loc>https://livingdecorated.com/posts</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/vegetable-soup</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/cornbread</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/tomato-basil-soup</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/grilled-mozzarella-sandwich-2</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://livingdecorated.com/posts/cabbage-soup-with-smoked-sausage</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/sausage-and-cream-cheese-rolls</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/peppermint-bark</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://livingdecorated.com/posts/chocolate-peanut-butter-ritz-cookies</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/egg-nog</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/christmaswhitetrash</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/chicken-enchilada-soup</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/pecan-pie-bars-2</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/taco-soup</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/turkey-casserole</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/air-fryer-green-beans</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/hot-dogs-and-rice</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/thanksgiving-turkey</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/green-bean-casserole</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/french-fried-onions</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/cream-of-celery-soup</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/cream-of-mushroom-soup</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/stuffing-with-italian-sausag</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/cranberry-sauce</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/garlic-mashed-potatoes</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/whipped-cream</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://livingdecorated.com/posts/toasted-turkey-and-provolone-sandwich</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/pumpkin</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/pumpkin-white-hot-chocolate</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/pumpkin-cheesecake-dip</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/chili</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/blueberry-muffins</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/cast-iron-toasted-pepitas</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/butternut-squash-bisque</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/pumpkin-pie</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/white-cheddar-bisque</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/autumn-white-bean-soup</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/cream-cheese-jalepeno-corn</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/garlic-butter-carrots</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/perfect-deviled-eggs</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/frito-corn-salad</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/macaroni-and-cheese</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/vanilla-bean-bundt-cake</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/broccoli-and-cheese-soup</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/pumpkin-french-toast</loc>
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/caramel-sauce</loc>
+  </url>
+
+  <url>
+    <loc
+      >https://livingdecorated.com/posts/caramel-apple-crumble-cheesecake</loc
+    >
+  </url>
+
+  <url>
+    <loc>https://livingdecorated.com/posts/pumpkin-muffins</loc>
   </url>
 </urlset>
