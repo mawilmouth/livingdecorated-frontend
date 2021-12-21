@@ -8,7 +8,7 @@ interface HeadContentProps extends SeoType {
 }
 
 const HeadContent: FC<HeadContentProps> = (props): ReactElement => {
-  const { keywords, icon } = props;
+  const { keywords } = props;
   const title = props.title || SITE_NAME_PASCAL_CASE;
   const description = props.description || title || SITE_NAME_PASCAL_CASE;
   const keywordsContent: string = (
@@ -53,7 +53,7 @@ const HeadContent: FC<HeadContentProps> = (props): ReactElement => {
 
       <meta name="twitter:card" content="summary" />
 
-      <link rel="icon" href={icon || '/favicon.ico'} />
+      <link rel="icon" href="/favicon.ico" />
 
       {props.children}
     </Head>
