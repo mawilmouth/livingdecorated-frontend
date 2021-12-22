@@ -53,7 +53,7 @@ const HeadContent: FC<HeadContentProps> = (props): ReactElement => {
 
       <meta name="twitter:card" content="summary" />
 
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" type="image/png" href="/barn.png" />
 
       {props.children}
     </Head>
