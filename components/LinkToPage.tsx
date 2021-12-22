@@ -1,4 +1,4 @@
-import { FC, ReactElement, ReactNode } from 'react';
+import type { FC, ReactElement, ReactNode } from 'react';
 import Link from 'next/link';
 
 interface LinkToPageProps {
