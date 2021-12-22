@@ -5,13 +5,15 @@ import { renderFeatureImage } from '../helpers';
 
 interface GhostPageProps {
   page: PageType;
+  className?: string;
 }
 
-const GhostPage: FC<GhostPageProps> = ({ page }): ReactElement => {
+const GhostPage: FC<GhostPageProps> = ({ page, className }): ReactElement => {
   const { title, html } = page;
+  const containerClassName: string = className ? ` ${className}` : ''
 
   return (
-    <div className="ghost-page row">
+    <div className={`ghost-page row${containerClassName}`}>
       <div className="columns">
         {renderFeatureImage(page)}
         <h1 className="title">{title}</h1>
