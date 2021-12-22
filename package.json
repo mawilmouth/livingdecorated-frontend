@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "create-sitemap": "node ./scripts/createSitemap.js"
   },
   "dependencies": {
     "@sentry/nextjs": "^6.16.1",
