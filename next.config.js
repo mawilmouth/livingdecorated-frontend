@@ -1,6 +1,7 @@
 const path = require('path');
+const { withSentryConfig } = require('@sentry/nextjs');
 
-module.exports = {
+const moduleExports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
@@ -17,3 +18,11 @@ module.exports = {
     return config;
   }
 };
+
+const sentryWebpackPluginOptions = {
+  silent: true, // Suppresses all logs
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options.
+};
+
+module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)
