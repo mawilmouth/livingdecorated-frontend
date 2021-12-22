@@ -2,7 +2,7 @@
   @include flex-align(column, flex-start, center);
   font-size: 18px;
 
-  p, ul, ol, .title, figure iframe, blockquote {
+  p, ul, ol, .title, figure iframe, blockquote, h1, h2, h3, h4, h5, h6 {
     max-width: $post-width;
     width: 100%;
   }

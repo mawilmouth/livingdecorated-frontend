@@ -15,7 +15,7 @@ const Privacy: FC<LayoutProps> = (props): ReactElement => {
 
   return (
     <BasicLayout {...props}>
-      <GhostPage page={page} />
+      <GhostPage page={page} className="privacy-page" />
     </BasicLayout>
   );
 };
