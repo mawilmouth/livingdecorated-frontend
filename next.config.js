@@ -1,5 +1,10 @@
 const path = require('path');
+const withPlugins = require('next-compose-plugins');
 const { withSentryConfig } = require('@sentry/nextjs');
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
 
 const moduleExports = {
   sassOptions: {
@@ -19,10 +24,9 @@ const moduleExports = {
   }
 };
 
-const sentryWebpackPluginOptions = {
-  silent: true, // Suppresses all logs
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options.
-};
+const plugins = [
+  config => withSentryConfig(config, { silent: true }),
+  withBundleAnalyzer
+];
 
-module.exports = withSentryConfig(moduleExports, sentryWebpackPluginOptions)
+module.exports = withPlugins(plugins, moduleExports);
