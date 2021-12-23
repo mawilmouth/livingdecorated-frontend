@@ -1,10 +1,14 @@
-import { FC, ReactElement } from 'react';
-import moment, { Moment } from 'moment';
+import type { FC, ReactElement } from 'react';
+import type { Dayjs } from 'dayjs';
+import type { PostType } from '../types/lib/ghost/posts';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import GhostAuthor from './GhostAuthor';
-import { PostType } from '../types/lib/ghost/posts';
+
+dayjs.extend(relativeTime);
 
 interface PostInfoProps extends PostType {
-  dateAsAgo?: boolean;
+  relativeTime?: boolean;
 }
 
 const PostInfo: FC<PostInfoProps> = (props): ReactElement => {
@@ -12,7 +16,7 @@ const PostInfo: FC<PostInfoProps> = (props): ReactElement => {
     reading_time: readingTime,
     published_at: publishedAt,
     primary_author: primaryAuthor,
-    dateAsAgo = false
+    relativeTime = false
   } = props;
 
 
@@ -21,8 +25,8 @@ const PostInfo: FC<PostInfoProps> = (props): ReactElement => {
   function renderDate (): ReactElement | null {
     if (!publishedAt?.length) return null;
 
-    const date: Moment = moment(publishedAt);
-    const dateString: string = dateAsAgo ?
+    const date: Dayjs = dayjs(publishedAt);
+    const dateString: string = relativeTime ?
       date.fromNow() :
       date.format('MMM DD, YYYY');
 
