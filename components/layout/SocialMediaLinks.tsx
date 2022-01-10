@@ -59,7 +59,7 @@ const SocialMediaLinks: FC<{}> = (): ReactElement => {
       links.push(
         <li className="social-link" key={key}>
           <Link href={href} passHref={true}>
-            <a target="_blank">
+            <a target="_blank" rel="noopener">
               <Icon className={socialMediaName} />
             </a>
           </Link>
