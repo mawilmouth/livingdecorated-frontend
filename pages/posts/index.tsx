@@ -29,7 +29,7 @@ const Posts: FC<PostsProps> = (props): ReactElement => {
 
   function renderPosts (): ReactElement[] {
     return posts.map((post: PostType, index: number) => (
-      <FeaturedPost {...post} showInfo={true} key={`post-${index}`} />
+      <FeaturedPost {...post} showInfo key={`post-${index}`} />
     ));
   }
 

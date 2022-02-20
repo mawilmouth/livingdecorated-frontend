@@ -1,0 +1,27 @@
+.search-info-query {
+  text-transform: capitalize;
+  margin: 0px 0px 26px;
+
+  span {
+    text-transform: none;
+  }
+}
+
+.search-info-suggestions {
+  .search-info-query {
+    margin: 0px;
+    color: #cc5656;
+
+    span {
+      color: $standard-black-font;
+    }
+  }
+
+  p {
+    margin: 0px;
+  }
+
+  ul {
+    margin: 0px 0px 26px;
+  }
+}

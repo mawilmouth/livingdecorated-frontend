@@ -1,0 +1,39 @@
+.search-bar-container {
+  $height: 60px;
+  width: 100%;
+  height: $height;
+  @include flex-align();
+  margin: 0px 0px 20px;
+  background-color: $standard-white;
+
+  .form-container {
+    flex: 1;
+
+    input {
+      margin: 0px;
+      height: $height;
+      border: none;
+      box-shadow: none;
+      background-color: $standard-white;
+      font-size: 20px;
+    }
+  }
+
+  .submit {
+    width: 80px;
+    height: $height;
+    padding: 15px;
+    border-left: 1px solid $standard-white--variant-1;
+    transition: 200ms background-color;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $standard-green-font;
+    }
+
+    .search-icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
