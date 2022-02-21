@@ -17,7 +17,7 @@ const moduleExports = {
     ghostVersion: process.env.GHOST_VERSION,
     ghostContentKey: process.env.GHOST_CONTENT_KEY,
     gaId: process.env.NEXT_PUBLIC_GA_ID,
-    searchUrl: process.env.SEARCH_URL
+    searchUrl: process.env.NEXT_PUBLIC_SEARCH_URL
   },
 
   webpack(config, options) {

@@ -13,15 +13,7 @@ interface ApiType {
   search: (params: SearchParamsType) => Promise<PostsOrPages>;
 };
 
-export interface SearchSettingsType {
-  url?: string;
-};
-
-class Search {
-  constructor(settings: SearchSettingsType) {
-    this.url = settings.url || env.searchUrl;
-  }
-  
+class Search {  
   findMany = async (params: SearchParamsType): Promise<PostsOrPages> => {
     return this.api.search(params);
   }
@@ -59,7 +51,7 @@ class Search {
   }
 
   private api: ApiType = this._endpoint();
-  private url: string;
+  private url: string = env.searchUrl;
 }
 
-export default Search;
+export default new Search();

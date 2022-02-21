@@ -20,7 +20,6 @@ import env from '../constants/env';
 
 interface SearchProps extends LayoutProps {
   posts: PostType[];
-  searchUrl: string;
 }
 
 interface ServerSideProps {
@@ -28,7 +27,7 @@ interface ServerSideProps {
 }
 
 const Search: FC<SearchProps> = (props): ReactElement => {
-  const { seoData, navPages, categoryPages, searchUrl } = props;
+  const { seoData, navPages, categoryPages } = props;
   const [posts, setPosts] = useState<PostType[]>(props.posts);
   const [query, setQuery] = useState<string>('');
   const isValidQuery: boolean = !!query.length;
@@ -45,7 +44,7 @@ const Search: FC<SearchProps> = (props): ReactElement => {
   }
 
   const fetchPosts = async (q: string): Promise<PostType[]> => (
-    new SearchReader({ url: searchUrl }).findMany({
+    SearchReader.findMany({
       q,
       fields: 'slug,title,feature_image'
     })
@@ -136,8 +135,7 @@ const getServerSideProps: GetServerSideProps = async (): Promise<ServerSideProps
       seoData,
       posts,
       navPages,
-      categoryPages,
-      searchUrl: env.searchUrl
+      categoryPages
     }
   };
 }

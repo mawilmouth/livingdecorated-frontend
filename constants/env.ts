@@ -15,7 +15,7 @@ const env: Env = {
   ghostURL: process.env.GHOST_URL!,
   ghostContentKey: process.env.GHOST_CONTENT_KEY!,
   ghostVersion: process.env.GHOST_VERSION! as VersionType,
-  searchUrl: process.env.SEARCH_URL!
+  searchUrl: process.env.NEXT_PUBLIC_SEARCH_URL!
 };
 
 export default env;
