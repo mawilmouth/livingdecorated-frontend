@@ -14,6 +14,7 @@ import BasicLayout from '../layout/BasicLayout';
 import FeaturedPost from '../components/PostPreview';
 import SearchBar from '../components/search/SearchBar';
 import SearchInfo from '../components/search/SearchInfo';
+import Gtag from '../lib/ga';
 import { getPageSettings } from '../helpers/server';
 import env from '../constants/env';
 
@@ -31,6 +32,10 @@ const Search: FC<SearchProps> = (props): ReactElement => {
   const [posts, setPosts] = useState<PostType[]>(props.posts);
   const [query, setQuery] = useState<string>('');
   const isValidQuery: boolean = !!query.length;
+
+  const trackSearchEvent = (q: string): void => {
+    Gtag.event({ action: 'search', value: q });
+  }
 
   const renderPosts = (): ReactElement[] => {
     const postsToRender: PostType[] = !!posts.length ? posts : props.posts;
@@ -58,6 +63,7 @@ const Search: FC<SearchProps> = (props): ReactElement => {
     fetchPosts(q).then((data) => {
       setQuery(q);
       setPosts(data);
+      trackSearchEvent(q);
     });
   }
 

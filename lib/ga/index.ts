@@ -2,9 +2,9 @@ import env from '../../constants/env';
 
 interface EventArgs {
   action: string;
-  category: string;
-  label: string;
-  value: any;
+  category?: string;
+  label?: string;
+  value?: any;
 }
 
 class Gtag {
