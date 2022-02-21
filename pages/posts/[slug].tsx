@@ -3,7 +3,6 @@ import type { GetServerSideProps, GetServerSidePropsContext } from 'next';
 import type { LayoutProps } from '../../types/pages/index';
 import type { PostType } from '../../types/lib/ghost/posts';
 import type { SeoType } from '../../types/lib/ghost/seo';
-import PagesReader from '../../lib/ghost/pages';
 import PostsReader from '../../lib/ghost/posts';
 import BasicLayout from '../../layout/BasicLayout';
 import GhostPost from '../../components/GhostPost';
@@ -18,24 +17,16 @@ interface ServerSideProps {
   props: PostsPostProps;
 }
 
-const Post: FC<PostsPostProps> = ({ seoData, post, navPages, categoryPages }): ReactElement => {
-  return (
-    <BasicLayout
-      seoData={seoData}
-      navPages={navPages}
-      categoryPages={categoryPages}
-    >
-      <GhostPost post={post} />
-    </BasicLayout>
-  );
-}
+const Post: FC<PostsPostProps> = ({ seoData, post }): ReactElement => (
+  <BasicLayout seoData={seoData}>
+    <GhostPost post={post} />
+  </BasicLayout>
+);
 
 const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<ServerSideProps> => {
   const slug: string = ctx.query.slug as string || '' ;
-  const navPages = await PagesReader.nav();
-  const categoryPages = await PagesReader.categories();
   let post: PostType;
 
   try {
@@ -53,7 +44,7 @@ const getServerSideProps: GetServerSideProps = async (
   }; 
   
   return {
-    props: { seoData, post, navPages, categoryPages }
+    props: { seoData, post }
   };
 }
 

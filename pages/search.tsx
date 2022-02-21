@@ -3,12 +3,10 @@ import type { GetServerSideProps } from 'next';
 import type { SeoType } from '../types/lib/ghost/seo';
 import type { LayoutProps } from '../types/pages/index';
 import type { PostType } from '../types/lib/ghost/posts';
-import type { PageType } from '../types/lib/ghost/pages';
 import type { GhostApiBrowseParamsType } from '../types/lib/ghost';
 import type { PostsOrPages, Pagination } from '@tryghost/content-api';
 import { useState } from 'react';
 import SearchReader from '../lib/search';
-import PagesReader from '../lib/ghost/pages';
 import PostsReader from '../lib/ghost/posts';
 import BasicLayout from '../layout/BasicLayout';
 import FeaturedPost from '../components/PostPreview';
@@ -27,7 +25,6 @@ interface ServerSideProps {
 }
 
 const Search: FC<SearchProps> = (props): ReactElement => {
-  const { seoData, navPages, categoryPages } = props;
   const [posts, setPosts] = useState<PostType[]>(props.posts);
   const [query, setQuery] = useState<string>('');
   const isValidQuery: boolean = !!query.length;
@@ -68,11 +65,7 @@ const Search: FC<SearchProps> = (props): ReactElement => {
 
   return (
     <div className="posts-index">
-      <BasicLayout
-        seoData={seoData}
-        navPages={navPages}
-        categoryPages={categoryPages}
-      >
+      <BasicLayout seoData={props.seoData}>
         <div className="row">
           <div className="columns">
             <h1 className="page-title">search all posts</h1>
@@ -95,8 +88,6 @@ const Search: FC<SearchProps> = (props): ReactElement => {
 }
 
 const getServerSideProps: GetServerSideProps = async (): Promise<ServerSideProps> => {
-  const navPages: PageType[] = await PagesReader.nav();
-  const categoryPages: PageType[] = await PagesReader.categories();
   const postsParams: GhostApiBrowseParamsType = {
     order: 'published_at DESC'
   };
@@ -131,12 +122,7 @@ const getServerSideProps: GetServerSideProps = async (): Promise<ServerSideProps
   }
 
   return {
-    props: {
-      seoData,
-      posts,
-      navPages,
-      categoryPages
-    }
+    props: { seoData, posts }
   };
 }
 

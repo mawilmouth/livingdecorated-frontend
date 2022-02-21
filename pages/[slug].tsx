@@ -17,14 +17,8 @@ interface ServerSideProps {
   props: DynamicPageProps;
 }
 
-const DynamicPage: FC<DynamicPageProps> = ({
-  seoData, page, navPages, categoryPages
-}): ReactElement => (
-  <BasicLayout
-    seoData={seoData}
-    navPages={navPages}
-    categoryPages={categoryPages}
-  >
+const DynamicPage: FC<DynamicPageProps> = ({ seoData, page }): ReactElement => (
+  <BasicLayout seoData={seoData}>
     <GhostPage page={page} />
   </BasicLayout>
 );
@@ -33,8 +27,6 @@ const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<ServerSideProps> => {
   const slug: string = ctx.query.slug as string || '' ;
-  const navPages: PageType[] = await PagesReader.nav();
-  const categoryPages = await PagesReader.categories();
   let page: PageType;
 
   try {
@@ -51,12 +43,7 @@ const getServerSideProps: GetServerSideProps = async (
   }; 
 
   return {
-    props: {
-      seoData,
-      page,
-      navPages,
-      categoryPages
-    }
+    props: { seoData, page }
   };
 }
 

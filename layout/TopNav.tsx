@@ -1,19 +1,23 @@
-import { FC, ReactElement, ReactNode, Fragment, useState } from 'react';
-import Link from 'next/link';
-import { slide as Menu } from 'react-burger-menu'
+import type { FC, ReactElement, ReactNode } from 'react';
 import type { Props as MenuProps } from 'react-burger-menu';
 import type { PageType } from '../types/lib/ghost/pages';
-import { TopNavProps } from '../types/layout/TopNav';
+import type { NavLinkType } from '../staticData/defaultNavLinks';
+import { Fragment, useState, useEffect } from 'react';
+import Link from 'next/link';
+import { slide as Menu } from 'react-burger-menu'
+import PagesReader from '../lib/ghost/pages';
 import SocialMediaLinks from '../components/layout/SocialMediaLinks';
-import defaultNavLinks, { NavLinkType } from '../staticData/defaultNavLinks';
+import defaultNavLinks from '../staticData/defaultNavLinks';
 import LinkToPage from '../components/LinkToPage';
 import LinkToCategory from '../components/LinkToCategory';
 import { loopWithBreak } from '../helpers';
 
 const MAX_NUMBER_OF_NAV_LINKS: number = 6;
 
-const TopNav: FC<TopNavProps> = (props): ReactElement => {
+const TopNav: FC<{}> = (props): ReactElement => {
   const [mobileMenuActive, setMobileMenuActive] = useState<boolean>(false);
+  const [pages, setPages] = useState<PageType[]>([]);
+  const [categories, setCategories] = useState<PageType[]>([]);
   const burgerActiveClass: string = mobileMenuActive ? 'active' : '';
   let navLinkCount: number = 0;
 
@@ -32,6 +36,19 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
     onClose: closeMobileMenu,
     className: mobileMenuActive ? 'active' : '',
   };
+
+  useEffect(() => {
+    fetchPages();
+    fetchCategories();
+  }, []);
+
+  const fetchPages = async (): Promise<void> => {
+    setPages(await PagesReader.nav());
+  }
+
+  const fetchCategories = async (): Promise<void> => {
+    setCategories(await PagesReader.categories());
+  }
 
   function breakLinkRender (): boolean {
     return navLinkCount >= MAX_NUMBER_OF_NAV_LINKS;
@@ -60,7 +77,7 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
       incrementLinkCount();
     }
 
-    loopWithBreak<PageType>(props.navPages, callback, breakLinkRender);
+    loopWithBreak<PageType>(pages, callback, breakLinkRender);
 
     return links;
   }
@@ -78,7 +95,7 @@ const TopNav: FC<TopNavProps> = (props): ReactElement => {
       incrementLinkCount();
     }
 
-    loopWithBreak<PageType>(props.categoryPages, callback, breakLinkRender);
+    loopWithBreak<PageType>(categories, callback, breakLinkRender);
 
     return links;
   }
