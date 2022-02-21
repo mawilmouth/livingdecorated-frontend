@@ -3,11 +3,9 @@ import type { GetServerSidePropsContext, GetServerSideProps } from 'next';
 import type { SeoType } from '../../types/lib/ghost/seo';
 import type { LayoutProps } from '../../types/pages/index';
 import type { PostType } from '../../types/lib/ghost/posts';
-import type { PageType } from '../../types/lib/ghost/pages';
 import type { GhostApiBrowseParamsType } from '../../types/lib/ghost';
 import type { TagType } from '../../types/lib/ghost/tags';
 import type { Pagination, PostsOrPages } from '@tryghost/content-api';
-import PagesReader from '../../lib/ghost/pages';
 import PostsReader from '../../lib/ghost/posts';
 import TagReader from '../../lib/ghost/tags';
 import BasicLayout from '../../layout/BasicLayout';
@@ -25,7 +23,7 @@ interface ServerSideProps {
 }
 
 const Posts: FC<PostsProps> = (props): ReactElement => {
-  const { seoData, posts, category, navPages, categoryPages } = props;
+  const { seoData, posts, category } = props;
 
   function renderPosts (): ReactElement[] {
     return posts.map((post: PostType, index: number) => (
@@ -37,11 +35,7 @@ const Posts: FC<PostsProps> = (props): ReactElement => {
 
   return (
     <div className="posts-index">
-      <BasicLayout
-        seoData={seoData}
-        navPages={navPages}
-        categoryPages={categoryPages}
-      >
+      <BasicLayout seoData={seoData}>
         <div className="row">
           <div className="columns">
             <h1 className="page-title">{pageTitle}</h1>
@@ -58,8 +52,6 @@ const Posts: FC<PostsProps> = (props): ReactElement => {
 const getServerSideProps: GetServerSideProps = async (
   ctx: GetServerSidePropsContext
 ): Promise<ServerSideProps> => {
-  const navPages: PageType[] = await PagesReader.nav();
-  const categoryPages: PageType[] = await PagesReader.categories();
   const categorySlug: string = ctx.query.category as string || '';
   const postsParams: GhostApiBrowseParamsType = {
     order: 'published_at DESC',
@@ -120,7 +112,7 @@ const getServerSideProps: GetServerSideProps = async (
   }
 
   return {
-    props: { seoData, posts, category, navPages, categoryPages }
+    props: { seoData, posts, category }
   };
 }
 

@@ -13,9 +13,9 @@ const moduleExports = {
 
   env: {
     appURL: process.env.APP_URL,
-    ghostURL: process.env.GHOST_URL,
-    ghostVersion: process.env.GHOST_VERSION,
-    ghostContentKey: process.env.GHOST_CONTENT_KEY,
+    ghostURL: process.env.NEXT_PUBLIC_GHOST_URL,
+    ghostVersion: process.env.NEXT_PUBLIC_GHOST_VERSION,
+    ghostContentKey: process.env.NEXT_PUBLIC_GHOST_CONTENT_KEY,
     gaId: process.env.NEXT_PUBLIC_GA_ID,
     searchUrl: process.env.NEXT_PUBLIC_SEARCH_URL
   },

@@ -1,9 +1,8 @@
 import type { FC, ReactElement } from 'react';
-import type { GetServerSidePropsContext, GetServerSideProps, GetServerSidePropsResult } from 'next';
+import type { GetServerSideProps, GetServerSidePropsResult } from 'next';
 import type { SeoType } from '../types/lib/ghost/seo';
 import type { PageType } from '../types/lib/ghost/pages';
 import type { LayoutProps } from '../types/pages/index';
-import PagesReader from '../lib/ghost/pages';
 import BasicLayout from '../layout/BasicLayout';
 import GhostPage from '../components/GhostPage';
 import { getPageSettings } from '../helpers/server';
@@ -20,12 +19,7 @@ const Privacy: FC<LayoutProps> = (props): ReactElement => {
   );
 };
 
-const getServerSideProps: GetServerSideProps = async (
-  ctx: GetServerSidePropsContext
-): Promise<GetServerSidePropsResult<LayoutProps>> => {
-  const navPages: PageType[] = await PagesReader.nav();
-  const categoryPages = await PagesReader.categories();
-
+const getServerSideProps: GetServerSideProps = async (): Promise<GetServerSidePropsResult<LayoutProps>> => {
   const seoData: SeoType = {
     ...await getPageSettings(),
     title: 'Privacy | LivingDecorated',
@@ -33,11 +27,7 @@ const getServerSideProps: GetServerSideProps = async (
   }; 
 
   return {
-    props: {
-      seoData,
-      navPages,
-      categoryPages
-    }
+    props: { seoData }
   };
 }
 

@@ -2,7 +2,6 @@ import type { FC, ReactElement } from 'react';
 import type { GetServerSideProps } from 'next';
 import type { ServerSidePageProps, PageProps } from '../types/pages/index';
 import type { SeoType } from '../types/lib/ghost/seo';
-import PagesReader from '../lib/ghost/pages';
 import PostsReader from '../lib/ghost/posts';
 import TagsReader from '../lib/ghost/tags';
 import BasicLayout from '../layout/BasicLayout';
@@ -13,7 +12,7 @@ import { getPageSettings } from '../helpers/server';
 import env from '../constants/env';
 
 const Home: FC<PageProps> = (props): ReactElement => {
-  const { navPages, recentPosts, categoryPages, categoriesPosts, seoData } = props;
+  const { recentPosts, categoriesPosts, seoData } = props;
 
   function renderCategories (): ReactElement[] {
     return categoriesPosts.map(({ category, posts }, index) => (
@@ -26,11 +25,7 @@ const Home: FC<PageProps> = (props): ReactElement => {
   }
 
   return (
-    <BasicLayout
-      seoData={seoData}
-      navPages={navPages}
-      categoryPages={categoryPages}
-    >
+    <BasicLayout seoData={seoData}>
       <RecentPosts posts={recentPosts} />
       {renderCategories()}
     </BasicLayout>
@@ -38,8 +33,6 @@ const Home: FC<PageProps> = (props): ReactElement => {
 }
 
 export const getServerSideProps: GetServerSideProps = async (): Promise<ServerSidePageProps> => {
-  const navPages = await PagesReader.nav();
-  const categoryPages = await PagesReader.categories();
   const categories = await TagsReader.public({ fields: 'id,slug,name' });
   const recentPosts = await PostsReader.recent({
     limit: 4, fields: 'id,slug,title,feature_image'
@@ -73,7 +66,7 @@ export const getServerSideProps: GetServerSideProps = async (): Promise<ServerSi
   }; 
 
   return {
-    props: { seoData, navPages, categoryPages, recentPosts, categoriesPosts }
+    props: { seoData, recentPosts, categoriesPosts }
   };
 }
 
