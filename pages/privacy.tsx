@@ -28,6 +28,7 @@ const getServerSideProps: GetServerSideProps = async (
 
   const seoData: SeoType = {
     ...await getPageSettings(),
+    title: 'Privacy | LivingDecorated',
     og_url: `${env.appURL}/privacy`
   }; 
 

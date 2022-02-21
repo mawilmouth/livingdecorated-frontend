@@ -68,6 +68,7 @@ export const getServerSideProps: GetServerSideProps = async (): Promise<ServerSi
 
   const seoData: SeoType = {
     ...await getPageSettings(),
+    title: 'Home | LivingDecorated',
     og_url: env.appURL
   }; 
 
