@@ -105,6 +105,7 @@ const getServerSideProps: GetServerSideProps = async (): Promise<ServerSideProps
   
   const seoData: SeoType = {
     ...await getPageSettings(),
+    title: 'Search | LivingDecorated',
     og_url: ogUrl
   }; 
 
