@@ -18,7 +18,7 @@ const BasicLayout: FC<BasicLayoutProps> = (props): ReactElement => (
       <div className="row expanded">
         <div className="columns small-12 basic-layout-container">
           <div className="row inner-layout-wrapper">
-            <div className="columns content-container">{props.children}</div>
+            <main className="columns content-container">{props.children}</main>
           </div>
         </div>
       </div>

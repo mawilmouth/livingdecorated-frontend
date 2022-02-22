@@ -12,7 +12,7 @@ const GhostPost: FC<GhostPostProps> = ({ post }): ReactElement => {
   const { title, excerpt, html } = post;
 
   return (
-    <div className="ghost-post row">
+    <article className="ghost-post row">
       <div className="columns">
         {renderFeatureImage(post)}
         <h1 className="title">{title}</h1>
@@ -20,7 +20,7 @@ const GhostPost: FC<GhostPostProps> = ({ post }): ReactElement => {
         <PostInfo {...post} />
         <GhostContent content={html as string} />
       </div>
-    </div>
+    </article>
   );
 }
 
