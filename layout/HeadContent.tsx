@@ -48,6 +48,7 @@ const HeadContent: FC<HeadContentProps> = (props): ReactElement => {
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywordsContent} />
+      <meta name="robots" content="index, follow" />
 
       {renderOGTags()}
 
