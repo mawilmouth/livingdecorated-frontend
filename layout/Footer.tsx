@@ -5,7 +5,7 @@ import LinkToStaticPage from '../components/LinkToStaticPage';
 
 const Footer: FC<{}> = (): ReactElement => {
   return (
-    <div className="footer-container row expanded">
+    <footer className="footer-container row expanded">
       <div className="columns small-12">
         <ul className="social-medias-list">
           <SocialMediaLinks />
@@ -19,7 +19,7 @@ const Footer: FC<{}> = (): ReactElement => {
       <div className="columns page-links-container small-12">
         <LinkToStaticPage path="/privacy">Privacy Policy</LinkToStaticPage>
       </div>
-    </div>
+    </footer>
   );
 };
 

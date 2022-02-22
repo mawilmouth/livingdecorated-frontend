@@ -13,13 +13,13 @@ const GhostPage: FC<GhostPageProps> = ({ page, className }): ReactElement => {
   const containerClassName: string = className ? ` ${className}` : ''
 
   return (
-    <div className={`ghost-page row${containerClassName}`}>
+    <article className={`ghost-page row${containerClassName}`}>
       <div className="columns">
         {renderFeatureImage(page)}
         <h1 className="title">{title}</h1>
         <GhostContent content={html} />
       </div>
-    </div>
+    </article>
   );
 }
 

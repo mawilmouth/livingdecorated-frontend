@@ -130,7 +130,7 @@ const TopNav: FC<{}> = (props): ReactElement => {
 
   return (
     <Fragment>
-      <div className="nav-container">
+      <nav className="nav-container">
         <div className="row">
           <div className="columns small-12 large-4 logo-container">
             <ul className="list">
@@ -152,7 +152,7 @@ const TopNav: FC<{}> = (props): ReactElement => {
             </div>
           </div>
         </div>
-      </div>
+      </nav>
       <Menu {...menuOptions}>
         <div className="responsive-menu" tabIndex={-1}>
           <ul className="list">
